@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo, memo } from "react";
 import { Search, MapPin, Calendar, Users, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,9 +8,10 @@ import heroBeach from "@/assets/hero-beach.jpg";
 const HeroSection = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
-  const popularDestinations = [
+  // Memoize popular destinations to prevent recreation
+  const popularDestinations = useMemo(() => [
     "Dubai", "Thailand", "Vietnam", "Kashmir", "Ladakh", "Manali", "Goa", "Kerala"
-  ];
+  ], []);
 
   return (
     <div className="relative min-h-screen flex items-center overflow-hidden">
@@ -20,6 +21,10 @@ const HeroSection = () => {
           src={heroBeach} 
           alt="Tropical Paradise" 
           className="w-full h-full object-cover"
+          style={{
+            willChange: 'transform',
+            transform: 'translateZ(0)',
+          }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent"></div>
         <div className="absolute inset-0 hero-pattern"></div>
@@ -171,4 +176,4 @@ const HeroSection = () => {
   );
 };
 
-export default HeroSection;
+export default memo(HeroSection);

@@ -141,7 +141,7 @@ const ServicesSection = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button className="btn-secondary">
-                Get Free Consultation
+                Info@wandersaga.in
               </button>
               <button className="bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 px-6 py-3 rounded-xl font-medium transition-all duration-300">
                 Call +91-9286483766

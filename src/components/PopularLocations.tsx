@@ -1,99 +1,138 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback, useMemo, memo } from "react";
+import { useNavigate } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { MapPin, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-// Using Unsplash images by keyword for each location
+// Import destination images
+import spitiImage from "@/assets/Spitivalley.jpg";
+import ladakhImage from "@/assets/Ladakh.jpg";
+import meghalayaImage from "@/assets/Meghalaya.JPG";
+import kashmirImage from "@/assets/Kashmir.jpg";
+import uttarakhandImage from "@/assets/Uttarakhand.jpg";
+import himachalImage from "@/assets/Himachal.jpg";
+import rajasthanImage from "@/assets/Rajasthan.jpg";
 
 const PopularLocations = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [cardsPerView, setCardsPerView] = useState(5);
   const carouselRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
 
-  const locations = [
+  // Memoize locations to prevent recreation on each render
+  const locations = useMemo(() => [
     {
       id: 1,
       name: "Spiti Valley",
-      image: "https://source.unsplash.com/800x600/?spiti,valley,himalayas",
+      image: spitiImage,
       subtitle: "See More",
-      description: "Himalayan Desert"
+      description: "The Middle Land"
     },
     {
       id: 2,
       name: "Ladakh",
-      image: "https://source.unsplash.com/800x600/?ladakh,leh,monastery",
+      image: ladakhImage,
       subtitle: "See More",
-      description: "High Altitude Adventure"
+      description: "Moonland"
     },
     {
       id: 3,
       name: "Meghalaya",
-      image: "https://source.unsplash.com/800x600/?meghalaya,waterfalls,living,root,bridge",
+      image: meghalayaImage,
       subtitle: "See More",
       description: "Abode of Clouds"
     },
     {
       id: 4,
       name: "Kashmir",
-      image: "https://source.unsplash.com/800x600/?kashmir,dal,lake,srinagar",
+      image: kashmirImage,
       subtitle: "See More",
       description: "Paradise on Earth"
     },
     {
       id: 5,
       name: "Uttarakhand",
-      image: "https://source.unsplash.com/800x600/?uttarakhand,haridwar,rishikesh,himachal",
+      image: uttarakhandImage,
       subtitle: "See More",
-      description: "Land of Gods"
+      description: "Devbhoomi"
     },
     {
       id: 6,
       name: "Himachal Pradesh",
-      image: "https://source.unsplash.com/800x600/?himachal,manali,shimla",
+      image: himachalImage,
       subtitle: "See More",
-      description: "Hill Station Beauty"
+      description: "Land of Gods"
     },
     {
       id: 7,
       name: "Rajasthan",
-      image: "https://source.unsplash.com/800x600/?rajasthan,jaipur,jaisalmer,fort",
+      image: rajasthanImage,
       subtitle: "See More",
-      description: "Royal Heritage"
+      description: "Land of Kings"
     }
-  ];
+  ], []);
 
-  // Auto-scroll functionality
+  // Optimized navigation functions with useCallback
+  const goToNext = useCallback(() => {
+    setIsAutoPlaying(false);
+    setCurrentIndex((prevIndex) => {
+      const maxIndex = Math.max(0, locations.length - cardsPerView);
+      return prevIndex >= maxIndex ? 0 : prevIndex + 1;
+    });
+    setTimeout(() => setIsAutoPlaying(true), 5000);
+  }, [locations.length, cardsPerView]);
+
+  const goToPrev = useCallback(() => {
+    setIsAutoPlaying(false);
+    setCurrentIndex((prevIndex) => {
+      const maxIndex = Math.max(0, locations.length - cardsPerView);
+      return prevIndex <= 0 ? maxIndex : prevIndex - 1;
+    });
+    setTimeout(() => setIsAutoPlaying(true), 5000);
+  }, [locations.length, cardsPerView]);
+
+  // Determine cards visible per view responsively with debouncing
+  useEffect(() => {
+    let timeoutId: NodeJS.Timeout;
+    
+    const updateCardsPerView = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        const width = window.innerWidth;
+        if (width >= 1024) {
+          setCardsPerView(5);
+        } else if (width >= 768) {
+          setCardsPerView(3);
+        } else if (width >= 640) {
+          setCardsPerView(2);
+        } else {
+          setCardsPerView(1);
+        }
+      }, 100);
+    };
+    
+    updateCardsPerView();
+    window.addEventListener("resize", updateCardsPerView, { passive: true });
+    return () => {
+      window.removeEventListener("resize", updateCardsPerView);
+      clearTimeout(timeoutId);
+    };
+  }, []);
+
+  // Auto-scroll functionality with optimized cleanup
   useEffect(() => {
     if (!isAutoPlaying) return;
 
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => {
-        const maxIndex = Math.max(0, locations.length - 5); // Show 5 cards at once
+        const maxIndex = Math.max(0, locations.length - cardsPerView);
         return prevIndex >= maxIndex ? 0 : prevIndex + 1;
       });
-    }, 3000); // Move every 3 seconds
+    }, 3000);
 
     return () => clearInterval(interval);
-  }, [isAutoPlaying, locations.length]);
-
-  // Handle manual navigation
-  const goToNext = () => {
-    setIsAutoPlaying(false);
-    setCurrentIndex((prevIndex) => {
-      const maxIndex = Math.max(0, locations.length - 5);
-      return prevIndex >= maxIndex ? 0 : prevIndex + 1;
-    });
-    setTimeout(() => setIsAutoPlaying(true), 5000); // Resume auto-play after 5 seconds
-  };
-
-  const goToPrev = () => {
-    setIsAutoPlaying(false);
-    setCurrentIndex((prevIndex) => {
-      const maxIndex = Math.max(0, locations.length - 5);
-      return prevIndex <= 0 ? maxIndex : prevIndex - 1;
-    });
-    setTimeout(() => setIsAutoPlaying(true), 5000); // Resume auto-play after 5 seconds
-  };
+  }, [isAutoPlaying, locations.length, cardsPerView]);
 
   return (
     <section className="py-16 bg-gradient-to-br from-slate-50 to-blue-50 relative overflow-hidden">
@@ -140,8 +179,8 @@ const PopularLocations = () => {
             <div 
               className="flex transition-transform duration-700 ease-in-out"
               style={{
-                transform: `translateX(-${currentIndex * (100 / 5)}%)`,
-                width: `${(locations.length / 5) * 100}%`
+                transform: `translateX(-${currentIndex * (100 / cardsPerView)}%)`,
+                width: `${(locations.length / cardsPerView) * 100}%`
               }}
             >
 
@@ -150,13 +189,18 @@ const PopularLocations = () => {
                   key={location.id}
                   className="w-full max-w-xs mx-auto sm:w-1/2 md:w-1/3 lg:w-1/5 px-3 flex-shrink-0"
                 >
-                  <Card className="group relative overflow-hidden bg-white/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2 cursor-pointer h-80">
+                  <Card onClick={() => navigate(`/tour/${location.name.toLowerCase().includes('spiti') ? 'spiti-valley' : location.name.toLowerCase().includes('himachal') ? 'himachal-pradesh' : location.name.toLowerCase()}`)} className="group relative overflow-hidden bg-white/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2 cursor-pointer h-80">
                     <div className="relative h-full overflow-hidden rounded-xl">
                       <img 
                         src={location.image} 
                         alt={location.name}
-                        loading="lazy"
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        loading="lazy"
+                        decoding="async"
+                        style={{
+                          willChange: 'transform',
+                          transform: 'translateZ(0)',
+                        }}
                       />
                       
                       {/* Gradient Overlay */}
@@ -174,6 +218,10 @@ const PopularLocations = () => {
                           variant="outline"
                           size="sm" 
                           className="text-white border-white/30 bg-white/10 hover:bg-white hover:text-black transition-all duration-300"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            navigate(`/tour/${location.name.toLowerCase().includes('spiti') ? 'spiti-valley' : location.name.toLowerCase().includes('himachal') ? 'himachal-pradesh' : location.name.toLowerCase()}`);
+                          }}
                         >
                           {location.subtitle}
                         </Button>
@@ -190,7 +238,7 @@ const PopularLocations = () => {
 
           {/* Progress Indicators */}
           <div className="flex justify-center space-x-2 mt-8">
-            {Array.from({ length: Math.max(1, locations.length - 4) }).map((_, index) => (
+            {Array.from({ length: Math.max(1, locations.length - cardsPerView + 1) }).map((_, index) => (
               <button
                 key={index}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
@@ -219,4 +267,4 @@ const PopularLocations = () => {
   );
 };
 
-export default PopularLocations;
+export default memo(PopularLocations);
