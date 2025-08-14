@@ -16,52 +16,52 @@ const PopularLocations = () => {
   const locations = [
     {
       id: 1,
-      name: "Meghalaya",
+      name: "Spiti Valley",
       image: mountainImage,
       subtitle: "See More",
-      description: "Northeast Paradise"
+      description: "Himalayan Desert"
     },
     {
       id: 2,
-      name: "Vietnam",
-      image: heritageImage,
-      subtitle: "See More",
-      description: "Cultural Heritage"
-    },
-    {
-      id: 3,
-      name: "Thailand Tour Packages",
-      image: beachImage,
-      subtitle: "See More",
-      description: "Tropical Paradise"
-    },
-    {
-      id: 4,
-      name: "Dubai",
-      image: heritageImage,
-      subtitle: "See More",
-      description: "Modern Wonders"
-    },
-    {
-      id: 5,
-      name: "Leh Ladakh",
+      name: "Ladakh",
       image: mountainImage,
       subtitle: "See More",
       description: "High Altitude Adventure"
     },
     {
-      id: 6,
+      id: 3,
+      name: "Meghalaya",
+      image: mountainImage,
+      subtitle: "See More",
+      description: "Abode of Clouds"
+    },
+    {
+      id: 4,
       name: "Kashmir",
       image: mountainImage,
-      subtitle: "See More", 
+      subtitle: "See More",
       description: "Paradise on Earth"
     },
     {
-      id: 7,
-      name: "Manali",
+      id: 5,
+      name: "Uttarakhand",
+      image: mountainImage,
+      subtitle: "See More",
+      description: "Land of Gods"
+    },
+    {
+      id: 6,
+      name: "Himachal Pradesh",
       image: mountainImage,
       subtitle: "See More",
       description: "Hill Station Beauty"
+    },
+    {
+      id: 7,
+      name: "Rajasthan",
+      image: heritageImage,
+      subtitle: "See More",
+      description: "Royal Heritage"
     }
   ];
 
