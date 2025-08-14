@@ -1,12 +1,9 @@
 import { useState, useEffect, useRef } from "react";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { MapPin, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-// Import placeholder images
-import beachImage from "@/assets/hero-beach.jpg";
-import mountainImage from "@/assets/mountain-adventure.jpg";
-import heritageImage from "@/assets/cultural-heritage.jpg";
+// Using Unsplash images by keyword for each location
 
 const PopularLocations = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -17,49 +14,49 @@ const PopularLocations = () => {
     {
       id: 1,
       name: "Spiti Valley",
-      image: mountainImage,
+      image: "https://source.unsplash.com/800x600/?spiti,valley,himalayas",
       subtitle: "See More",
       description: "Himalayan Desert"
     },
     {
       id: 2,
       name: "Ladakh",
-      image: mountainImage,
+      image: "https://source.unsplash.com/800x600/?ladakh,leh,monastery",
       subtitle: "See More",
       description: "High Altitude Adventure"
     },
     {
       id: 3,
       name: "Meghalaya",
-      image: mountainImage,
+      image: "https://source.unsplash.com/800x600/?meghalaya,waterfalls,living,root,bridge",
       subtitle: "See More",
       description: "Abode of Clouds"
     },
     {
       id: 4,
       name: "Kashmir",
-      image: mountainImage,
+      image: "https://source.unsplash.com/800x600/?kashmir,dal,lake,srinagar",
       subtitle: "See More",
       description: "Paradise on Earth"
     },
     {
       id: 5,
       name: "Uttarakhand",
-      image: mountainImage,
+      image: "https://source.unsplash.com/800x600/?uttarakhand,haridwar,rishikesh,himachal",
       subtitle: "See More",
       description: "Land of Gods"
     },
     {
       id: 6,
       name: "Himachal Pradesh",
-      image: mountainImage,
+      image: "https://source.unsplash.com/800x600/?himachal,manali,shimla",
       subtitle: "See More",
       description: "Hill Station Beauty"
     },
     {
       id: 7,
       name: "Rajasthan",
-      image: heritageImage,
+      image: "https://source.unsplash.com/800x600/?rajasthan,jaipur,jaisalmer,fort",
       subtitle: "See More",
       description: "Royal Heritage"
     }
@@ -158,6 +155,7 @@ const PopularLocations = () => {
                       <img 
                         src={location.image} 
                         alt={location.name}
+                        loading="lazy"
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                       />
                       
