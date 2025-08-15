@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import founderImage from "@/assets/IMG_4401.jpg";
+import heroBeachImage from "@/assets/hero-beach.webp";
 
 const AboutUs = () => {
   const navigate = useNavigate();
@@ -14,6 +15,8 @@ const AboutUs = () => {
 
   useEffect(() => {
     setIsVisible(true);
+    // Scroll to top when component mounts
+    window.scrollTo(0, 0);
   }, []);
 
   const fadeInUp = {
@@ -168,7 +171,7 @@ const AboutUs = () => {
             <motion.div variants={fadeInUp} className="relative">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 <img 
-                  src="/src/assets/hero-beach.webp" 
+                  src={heroBeachImage} 
                   alt="Wandersaga Travel Experience" 
                   className="w-full h-96 object-cover"
                 />

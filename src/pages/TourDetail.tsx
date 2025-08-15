@@ -41,6 +41,11 @@ const TourDetail = () => {
   const tour: Tour | undefined = useMemo(() => (slug ? getTourBySlug(slug) : undefined), [slug]);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
+  // Scroll to top when component mounts or slug changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
+
   if (!tour) {
     return (
       <div className="min-h-screen bg-slate-50">

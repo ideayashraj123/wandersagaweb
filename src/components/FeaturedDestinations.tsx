@@ -25,8 +25,8 @@ const FeaturedDestinations = () => {
       reviews: 234,
       duration: "5-7 Days",
       groupSize: "2-8 People",
-      price: "₹89,999",
-      originalPrice: "₹1,19,999",
+      price: "₹19,999",
+      originalPrice: "₹25,999",
       highlights: ["Snow Adventures", "Frozen Waterfalls", "Winter Monasteries"],
       category: "Adventure",
       tourSlug: "winter-spiti-expedition"

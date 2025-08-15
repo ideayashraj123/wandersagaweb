@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Star, MapPin, Clock, Users } from "lucide-react";
@@ -8,6 +9,11 @@ import Footer from "@/components/Footer";
 
 const Himachal = () => {
   const navigate = useNavigate();
+
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const himachalTours = [
     {
