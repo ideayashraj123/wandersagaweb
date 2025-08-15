@@ -162,13 +162,19 @@ const HeroSection = () => {
                       onFocus={() => setIsDropdownOpen(searchQuery.length > 0)}
                       className="pl-10 pr-10 bg-white/10 backdrop-blur-sm border-white/20 text-white placeholder:text-white/60"
                     />
-                    <ChevronDown className={`absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-white/60 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} />
+                    <button
+                      type="button"
+                      onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                      className="absolute right-3 top-1/2 transform -translate-y-1/2 z-10 hover:bg-white/10 rounded-full p-1 transition-all duration-200"
+                    >
+                      <ChevronDown className={`h-4 w-4 text-white/60 hover:text-white transition-all duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} />
+                    </button>
                     
                     {/* Dropdown */}
                     {isDropdownOpen && (
                       <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-lg shadow-xl border border-gray-200 z-50 max-h-60 overflow-y-auto">
-                        {filteredDestinations.length > 0 ? (
-                          filteredDestinations.map((destination, index) => (
+                        {(searchQuery.trim() ? filteredDestinations : destinations).length > 0 ? (
+                          (searchQuery.trim() ? filteredDestinations : destinations).map((destination, index) => (
                             <button
                               key={index}
                               onClick={() => handleDestinationSelect(destination)}

@@ -31,8 +31,8 @@ const PromotionalPopup = () => {
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent className="max-w-xs sm:max-w-sm md:max-w-3xl p-0 overflow-hidden border-0 bg-transparent mx-4 sm:mx-auto max-h-[85vh] sm:max-h-none">
-        <div className="relative bg-white rounded-xl sm:rounded-2xl shadow-2xl overflow-hidden max-h-[85vh] sm:max-h-none overflow-y-auto sm:overflow-visible">
+      <DialogContent className="max-w-xs sm:max-w-sm md:max-w-3xl p-0 overflow-hidden border-0 bg-transparent mx-auto max-h-[75vh] sm:max-h-none">
+        <div className="relative bg-white rounded-xl sm:rounded-2xl shadow-2xl overflow-hidden max-h-[75vh] sm:max-h-none overflow-y-auto sm:overflow-visible">
           {/* Close Button */}
           <button
             onClick={handleClose}
@@ -44,7 +44,7 @@ const PromotionalPopup = () => {
           <div className="grid md:grid-cols-2 h-full">
             {/* Left Side - Promotional Content */}
             <div 
-              className="relative p-3 sm:p-6 lg:p-8 bg-gradient-to-br from-cyan-400 via-blue-500 to-blue-600 text-white overflow-hidden"
+              className="relative p-2 sm:p-6 lg:p-8 bg-gradient-to-br from-cyan-400 via-blue-500 to-blue-600 text-white overflow-hidden"
               style={{
                 backgroundImage: `linear-gradient(135deg, rgba(34, 211, 238, 0.9) 0%, rgba(59, 130, 246, 0.9) 50%, rgba(37, 99, 235, 0.9) 100%), url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=2070&auto=format&fit=crop')`,
                 backgroundSize: 'cover',
@@ -69,25 +69,25 @@ const PromotionalPopup = () => {
 
               <div className="relative z-10 h-full flex flex-col justify-center">
                 {/* Special Offer Badge */}
-                <div className="inline-flex items-center space-x-1 sm:space-x-2 bg-cyan-300 text-gray-900 px-2 sm:px-3 py-0.5 sm:py-1.5 rounded-full text-xs font-bold mb-2 sm:mb-4 w-fit">
+                <div className="inline-flex items-center space-x-1 sm:space-x-2 bg-cyan-300 text-gray-900 px-2 sm:px-3 py-0.5 sm:py-1.5 rounded-full text-xs font-bold mb-1 sm:mb-4 w-fit">
                   <Gift className="h-2 w-2 sm:h-3 sm:w-3" />
                   <span className="text-xs">SPECIAL OFFER</span>
                 </div>
 
                 {/* Main Heading */}
-                <div className="mb-2 sm:mb-4">
-                  <h1 className="text-xl sm:text-3xl lg:text-5xl font-black leading-tight mb-1 sm:mb-3">
+                <div className="mb-1 sm:mb-4">
+                  <h1 className="text-lg sm:text-3xl lg:text-5xl font-black leading-tight mb-1 sm:mb-3">
                     <span className="block text-cyan-200">SUPER</span>
                     <span className="block text-white">SALE</span>
                   </h1>
                 </div>
 
                 {/* Discount Box */}
-                <div className="bg-white text-gray-900 rounded-lg sm:rounded-xl p-2 sm:p-4 mb-2 sm:mb-4 transform rotate-2 shadow-xl">
+                <div className="bg-white text-gray-900 rounded-lg sm:rounded-xl p-1.5 sm:p-4 mb-1 sm:mb-4 transform rotate-2 shadow-xl">
                   <div className="text-center">
-                    <div className="text-2xl sm:text-4xl lg:text-5xl font-black mb-1">
+                    <div className="text-xl sm:text-4xl lg:text-5xl font-black mb-1">
                       <span className="text-gray-900">25</span>
-                      <span className="text-blue-500 text-lg sm:text-2xl align-top">%</span>
+                      <span className="text-blue-500 text-sm sm:text-2xl align-top">%</span>
                     </div>
                     <div className="text-blue-500 font-bold text-xs sm:text-sm">
                       OFF
@@ -101,7 +101,7 @@ const PromotionalPopup = () => {
                 {/* CTA Button */}
                 <Button 
                   onClick={() => setIsOpen(false)}
-                  className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-1.5 sm:py-3 px-3 sm:px-6 rounded-full text-xs sm:text-sm shadow-lg transform hover:scale-105 transition-all duration-300 w-fit"
+                  className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-1 sm:py-3 px-2 sm:px-6 rounded-full text-xs sm:text-sm shadow-lg transform hover:scale-105 transition-all duration-300 w-fit"
                 >
                   BOOK NOW
                 </Button>
@@ -114,10 +114,10 @@ const PromotionalPopup = () => {
             </div>
 
             {/* Right Side - Contact Form */}
-            <div className="p-3 sm:p-6 lg:p-8 bg-white">
+            <div className="p-2 sm:p-6 lg:p-8 bg-white">
               <div className="h-full flex flex-col justify-center">
-                <div className="mb-3 sm:mb-6">
-                  <h2 className="text-lg sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-1 sm:mb-3">
+                <div className="mb-2 sm:mb-6">
+                  <h2 className="text-base sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-1 sm:mb-3">
                     Plan Your Next Trip
                   </h2>
                   <p className="text-gray-600 text-xs sm:text-sm">
@@ -125,12 +125,12 @@ const PromotionalPopup = () => {
                   </p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-2 sm:space-y-4">
-                  <div className="grid gap-2 sm:gap-3 md:grid-cols-2">
+                <form onSubmit={handleSubmit} className="space-y-1.5 sm:space-y-4">
+                  <div className="grid gap-1.5 sm:gap-3 md:grid-cols-2">
                     <Input
                       type="text"
                       placeholder="Full Name"
-                      className="h-7 sm:h-10 text-xs sm:text-sm border-2 border-gray-200 rounded-lg focus:border-primary"
+                      className="h-6 sm:h-10 text-xs sm:text-sm border-2 border-gray-200 rounded-lg focus:border-primary"
                       required
                     />
                     <Input
@@ -138,7 +138,7 @@ const PromotionalPopup = () => {
                       placeholder="Email Address"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="h-7 sm:h-10 text-xs sm:text-sm border-2 border-gray-200 rounded-lg focus:border-primary"
+                      className="h-6 sm:h-10 text-xs sm:text-sm border-2 border-gray-200 rounded-lg focus:border-primary"
                       required
                     />
                   </div>
@@ -146,26 +146,26 @@ const PromotionalPopup = () => {
                   <Input
                     type="tel"
                     placeholder="Phone Number"
-                    className="h-7 sm:h-10 text-xs sm:text-sm border-2 border-gray-200 rounded-lg focus:border-primary"
+                    className="h-6 sm:h-10 text-xs sm:text-sm border-2 border-gray-200 rounded-lg focus:border-primary"
                     required
                   />
                   
                   <Input
                     type="text"
                     placeholder="Preferred Destination"
-                    className="h-7 sm:h-10 text-xs sm:text-sm border-2 border-gray-200 rounded-lg focus:border-primary"
+                    className="h-6 sm:h-10 text-xs sm:text-sm border-2 border-gray-200 rounded-lg focus:border-primary"
                   />
 
                   <Button 
                     type="submit"
-                    className="w-full h-8 sm:h-12 text-xs sm:text-sm font-bold bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300"
+                    className="w-full h-7 sm:h-12 text-xs sm:text-sm font-bold bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300"
                   >
                     Submit
                     <ArrowRight className="ml-2 h-3 w-3 sm:h-4 sm:w-4" />
                   </Button>
                 </form>
 
-                <div className="mt-2 sm:mt-4 text-center">
+                <div className="mt-1 sm:mt-4 text-center">
                   <p className="text-xs text-gray-500">
                     🔒 Your information is secure and will never be shared
                   </p>

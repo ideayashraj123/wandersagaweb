@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Menu, X, MapPin, Phone, User, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -8,6 +8,7 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const navigate = useNavigate();
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -142,6 +143,28 @@ const Navbar = () => {
     setActiveDropdown(null);
   };
 
+  const handleMouseEnter = (itemName: string) => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
+    setActiveDropdown(itemName);
+  };
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => {
+      setActiveDropdown(null);
+    }, 300); // 300ms delay before closing
+  };
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
+
   return (
     <>
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
@@ -176,8 +199,8 @@ const Navbar = () => {
                 <div
                   key={item.name}
                   className="relative group"
-                  onMouseEnter={() => item.hasDropdown && setActiveDropdown(item.name)}
-                  onMouseLeave={() => item.hasDropdown && setActiveDropdown(null)}
+                  onMouseEnter={() => item.hasDropdown && handleMouseEnter(item.name)}
+                  onMouseLeave={() => item.hasDropdown && handleMouseLeave()}
                   style={{ zIndex: 100 }}
                 >
                   <button
@@ -198,31 +221,34 @@ const Navbar = () => {
                   {/* Dropdown Menu */}
                   {item.hasDropdown && activeDropdown === item.name && (
                     <div 
-                      className="absolute top-full left-0 mt-2 w-80 bg-white shadow-2xl border border-gray-200 rounded-xl overflow-visible z-[9999]"
+                      className="absolute top-full left-0 pt-2 w-80 z-[9999]"
+                      onMouseEnter={() => handleMouseEnter(item.name)}
+                      onMouseLeave={handleMouseLeave}
                       style={{ 
                         position: 'absolute',
                         top: '100%',
                         left: '0',
-                        marginTop: '8px',
                         zIndex: 9999
                       }}
                     >
-                      <div className="p-3 space-y-1">
-                        {item.dropdownItems && item.dropdownItems.length > 0 ? (
-                          item.dropdownItems.map((dropdownItem, index) => (
-                            <button
-                              key={`${dropdownItem.slug}-${index}`}
-                              onClick={() => handleTourClick(dropdownItem.slug)}
-                              className="w-full text-left px-4 py-3 rounded-lg hover:bg-primary/10 transition-all duration-200 text-gray-800 hover:text-primary font-medium text-sm block border-b border-gray-100 last:border-b-0"
-                            >
-                              {dropdownItem.name}
-                            </button>
-                          ))
-                        ) : (
-                          <div className="px-4 py-3 text-sm text-gray-500">
-                            No tours available
-                          </div>
-                        )}
+                      <div className="bg-white/20 backdrop-blur-md shadow-2xl border border-white/30 rounded-xl overflow-hidden">
+                        <div className="p-3 space-y-1">
+                          {item.dropdownItems && item.dropdownItems.length > 0 ? (
+                            item.dropdownItems.map((dropdownItem, index) => (
+                              <button
+                                key={`${dropdownItem.slug}-${index}`}
+                                onClick={() => handleTourClick(dropdownItem.slug)}
+                                className="w-full text-left px-4 py-3 rounded-lg hover:bg-white/20 transition-all duration-200 text-white hover:text-white font-medium text-sm block border-b border-white/20 last:border-b-0"
+                              >
+                                {dropdownItem.name}
+                              </button>
+                            ))
+                          ) : (
+                            <div className="px-4 py-3 text-sm text-white/70">
+                              No tours available
+                            </div>
+                          )}
+                        </div>
                       </div>
                     </div>
                   )}
