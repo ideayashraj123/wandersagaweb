@@ -1,8 +1,9 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 
 // Lazy load components that are not immediately visible
+const PremiumTrip = lazy(() => import("@/components/PremiumTrip"));
 const PopularLocations = lazy(() => import("@/components/PopularLocations"));
 const FeaturedDestinations = lazy(() => import("@/components/FeaturedDestinations"));
 const ServicesSection = lazy(() => import("@/components/ServicesSection"));
@@ -18,10 +19,19 @@ const LazyComponentFallback = () => (
 );
 
 const Index = () => {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const handlePlanTripClick = () => {
+    setIsPopupOpen(true);
+  };
+
   return (
     <div className="min-h-screen">
       <Navbar />
-      <HeroSection />
+      <HeroSection onPlanTripClick={handlePlanTripClick} />
+      <Suspense fallback={<LazyComponentFallback />}>
+        <PremiumTrip />
+      </Suspense>
       <Suspense fallback={<LazyComponentFallback />}>
         <PopularLocations />
       </Suspense>
@@ -38,7 +48,7 @@ const Index = () => {
         <Footer />
       </Suspense>
       <Suspense fallback={<LazyComponentFallback />}>
-        <PromotionalPopup />
+        <PromotionalPopup isOpen={isPopupOpen} onOpenChange={setIsPopupOpen} />
       </Suspense>
     </div>
   );

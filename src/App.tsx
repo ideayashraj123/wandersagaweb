@@ -14,6 +14,8 @@ import Uttarakhand from "./pages/Uttarakhand";
 import WeekendGetaways from "./pages/WeekendGetaways";
 import AboutUs from "./pages/AboutUs";
 import Disclaimer from "./pages/Disclaimer";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsAndConditions from "./pages/TermsAndConditions";
 import Rajasthan from "./pages/Rajasthan";
 import Kashmir from "./pages/Kashmir";
 import Ladakh from "./pages/Ladakh";
@@ -48,6 +50,8 @@ const App = () => (
           <Route path="/weekend-getaways" element={<WeekendGetaways />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/disclaimer" element={<Disclaimer />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
           <Route path="/uttarakhand-tours" element={<UttarakhandTours />} />
           <Route path="/himachal-tours" element={<HimachalTours />} />
           <Route path="/tour/:slug" element={<TourDetail />} />

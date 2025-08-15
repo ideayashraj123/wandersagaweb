@@ -14,8 +14,8 @@ const TestimonialsSection = () => {
       location: "Mumbai, India",
       image: happyTravelers,
       rating: 5,
-      text: "WanderSaga made our Maldives honeymoon absolutely magical! Every detail was perfect, from the overwater villa to the private dining experiences. The team went above and beyond to ensure our trip was unforgettable.",
-      trip: "Maldives Honeymoon Package"
+      text: "Our Spiti Valley expedition with WanderSaga was absolutely incredible! The remote locations, crystal clear lakes, and ancient monasteries left us speechless. Their local guides knew every hidden gem and made our journey truly authentic.",
+      trip: "Spiti Valley Expedition"
     },
     {
       id: 2,
@@ -28,30 +28,39 @@ const TestimonialsSection = () => {
     },
     {
       id: 3,
-      name: "Sarah Johnson",
-      location: "London, UK",
+      name: "Arjun Mehta",
+      location: "Bangalore, India",
       image: happyTravelers,
       rating: 5,
-      text: "Exploring Rajasthan with TravelLux was incredible! The cultural immersion, palace stays, and desert safari exceeded all expectations. Their attention to detail and local connections made it truly authentic.",
-      trip: "Rajasthan Cultural Tour"
+      text: "WanderSaga organized the perfect Kashmir trip for our family. From the shikara rides on Dal Lake to the snow activities in Gulmarg, every moment was magical. The accommodations were excellent and the food was absolutely delicious!",
+      trip: "Kashmir Paradise Valley"
     },
     {
       id: 4,
-      name: "Michael Chen",
-      location: "Singapore",
+      name: "Sneha Gupta",
+      location: "Pune, India",
       image: happyTravelers,
       rating: 5,
-      text: "Family trip to Kerala was perfectly organized. Kids loved the backwater cruise, we enjoyed the spice plantation tours, and everyone loved the traditional food experiences. Highly recommend TravelLux!",
-      trip: "Kerala Family Package"
+      text: "As a solo female traveler, I was initially nervous about the Himalayan trek, but WanderSaga's team made me feel completely safe and supported. The Chopta-Tungnath trek was challenging yet rewarding. Highly recommended!",
+      trip: "Chopta Tungnath Trek"
     },
     {
       id: 5,
-      name: "Aisha Patel",
-      location: "Ahmedabad, India",
+      name: "Vikram Singh",
+      location: "Jaipur, India",
       image: happyTravelers,
       rating: 5,
-      text: "Solo female traveler and felt completely safe throughout my Vietnam tour. TravelLux provided excellent support, trustworthy guides, and amazing cultural experiences. Best travel company ever!",
-      trip: "Vietnam Solo Adventure"
+      text: "The Rajasthan heritage tour exceeded all our expectations! WanderSaga's deep knowledge of local culture and history made our visit to palaces and forts come alive. The desert camping experience was the highlight of our trip.",
+      trip: "Royal Rajasthan Heritage"
+    },
+    {
+      id: 6,
+      name: "Kavya Nair",
+      location: "Chennai, India",
+      image: happyTravelers,
+      rating: 5,
+      text: "Our weekend getaway to Himachal with WanderSaga was perfectly planned. The Kasol-Kheerganga trek was adventure at its best, and the natural hot springs were so relaxing. Can't wait to book our next trip with them!",
+      trip: "Kasol Kheerganga Trek"
     }
   ];
 
@@ -93,7 +102,7 @@ const TestimonialsSection = () => {
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Don't just take our word for it. Hear from our satisfied customers who have 
-            experienced the magic of traveling with TravelLux.
+            experienced the magic of traveling with WanderSaga.
           </p>
         </div>
 

@@ -258,19 +258,20 @@ const Navbar = () => {
 
             {/* Contact & CTA */}
             <div className="hidden lg:flex items-center space-x-4">
-              <div className={`flex items-center space-x-2 text-sm ${
-                isScrolled ? "text-muted-foreground" : "text-white/90"
-              }`}>
-                <Phone className="h-4 w-4" />
-                <span>+91-9286483766</span>
-              </div>
               <Button 
+                size="sm" 
+                className="btn-hero"
+              >
+                <Phone className="h-4 w-4 mr-2" />
+                +91-9286483766
+              </Button>
+              {/* <Button 
                 size="sm" 
                 className="btn-hero"
               >
                 <User className="h-4 w-4 mr-2" />
                 Login
-              </Button>
+              </Button> */}
             </div>
 
             {/* Mobile menu button */}
@@ -340,14 +341,14 @@ const Navbar = () => {
               </div>
             ))}
             <div className="pt-4 border-t border-border/20">
-              <div className="flex items-center space-x-2 text-sm text-muted-foreground mb-4">
-                <Phone className="h-4 w-4" />
-                <span>+91-9286483766</span>
-              </div>
-              <Button className="btn-hero w-full">
+              <Button className="btn-hero w-full mb-4">
+                <Phone className="h-4 w-4 mr-2" />
+                +91-9286483766
+              </Button>
+              {/* <Button className="btn-hero w-full">
                 <User className="h-4 w-4 mr-2" />
                 Login / Sign Up
-              </Button>
+              </Button> */}
             </div>
           </div>
         </div>

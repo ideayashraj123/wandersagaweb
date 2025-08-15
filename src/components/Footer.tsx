@@ -21,16 +21,22 @@ const Footer = () => {
   };
 
   const quickLinks = [
-    "About Us", "Destinations", "Tour Packages", "Hotels", "Flights", "Travel Insurance"
+    { name: "About Us", link: "/about-us" }
   ];
 
   const destinations = [
-    "Dubai", "Thailand", "Vietnam", "Kashmir", "Ladakh", "Manali", "Goa", "Kerala"
+    { name: "Kashmir", link: "/kashmir" },
+    { name: "Ladakh", link: "/ladakh" },
+    { name: "Himachal", link: "/himachal" },
+    { name: "Spiti Valley", link: "/spiti-valley" },
+    { name: "Uttarakhand", link: "/uttarakhand" },
+    { name: "Rajasthan", link: "/rajasthan" },
+    { name: "Weekend Getaways", link: "/weekend-getaways" }
   ];
 
   const policies = [
-    { name: "Privacy Policy", link: "#" },
-    { name: "Terms & Conditions", link: "#" },
+    { name: "Privacy Policy", link: "/privacy-policy" },
+    { name: "Terms & Conditions", link: "/terms-and-conditions" },
     { name: "Disclaimer", link: "/disclaimer" },
     { name: "Cancellation Policy", link: "#" },
     { name: "Refund Policy", link: "#" }
@@ -94,13 +100,22 @@ const Footer = () => {
               <h3 className="text-lg font-bold mb-6">Quick Links</h3>
               <ul className="space-y-3">
                 {quickLinks.map((link) => (
-                  <li key={link}>
-                    <a 
-                      href="#" 
-                      className="text-white/80 hover:text-white transition-colors duration-300 text-sm"
-                    >
-                      {link}
-                    </a>
+                  <li key={link.name}>
+                    {link.link.startsWith('/') ? (
+                      <Link 
+                        to={link.link}
+                        className="text-white/80 hover:text-white transition-colors duration-300 text-sm"
+                      >
+                        {link.name}
+                      </Link>
+                    ) : (
+                      <a 
+                        href={link.link} 
+                        className="text-white/80 hover:text-white transition-colors duration-300 text-sm"
+                      >
+                        {link.name}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -111,14 +126,14 @@ const Footer = () => {
               <h3 className="text-lg font-bold mb-6">Popular Destinations</h3>
               <ul className="space-y-3">
                 {destinations.map((destination) => (
-                  <li key={destination}>
-                    <a 
-                      href="#" 
-                      className="text-white/80 hover:text-white transition-colors duration-300 text-sm flex items-center"
+                  <li key={destination.name}>
+                    <Link 
+                      to={destination.link} 
+                      className="text-white/80 hover:text-white transition-colors duration-300 text-sm flex items-center group"
                     >
-                      <Globe className="h-3 w-3 mr-2 text-accent" />
-                      {destination}
-                    </a>
+                      <Globe className="h-3 w-3 mr-2 text-accent group-hover:scale-110 transition-transform duration-300" />
+                      {destination.name}
+                    </Link>
                   </li>
                 ))}
               </ul>

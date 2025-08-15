@@ -5,18 +5,29 @@ import { Input } from "@/components/ui/input";
 import { X, Gift, Percent, ArrowRight, Sparkles, MapPin, Plane } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const PromotionalPopup = () => {
-  const [isOpen, setIsOpen] = useState(false);
+interface PromotionalPopupProps {
+  isOpen?: boolean;
+  onOpenChange?: (open: boolean) => void;
+}
+
+const PromotionalPopup = ({ isOpen: externalIsOpen, onOpenChange }: PromotionalPopupProps = {}) => {
+  const [internalIsOpen, setInternalIsOpen] = useState(false);
   const [email, setEmail] = useState("");
 
-  useEffect(() => {
-    // Show popup after 2 seconds when page loads
-    const timer = setTimeout(() => {
-      setIsOpen(true);
-    }, 2000);
+  // Use external control if provided, otherwise use internal state
+  const isOpen = externalIsOpen !== undefined ? externalIsOpen : internalIsOpen;
+  const setIsOpen = onOpenChange || setInternalIsOpen;
 
-    return () => clearTimeout(timer);
-  }, []);
+  useEffect(() => {
+    // Only show popup automatically if not externally controlled
+    if (externalIsOpen === undefined) {
+      const timer = setTimeout(() => {
+        setInternalIsOpen(true);
+      }, 2000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [externalIsOpen]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -180,3 +191,4 @@ const PromotionalPopup = () => {
 };
 
 export default PromotionalPopup;
+export type { PromotionalPopupProps };

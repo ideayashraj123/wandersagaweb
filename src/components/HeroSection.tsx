@@ -6,7 +6,11 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useNavigate } from "react-router-dom";
 import heroBeach from "@/assets/hero-beach.jpg";
 
-const HeroSection = () => {
+interface HeroSectionProps {
+  onPlanTripClick?: () => void;
+}
+
+const HeroSection = ({ onPlanTripClick }: HeroSectionProps) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedDestination, setSelectedDestination] = useState("");
@@ -136,6 +140,7 @@ const HeroSection = () => {
               </Button>
               <Button 
                 variant="outline" 
+                onClick={onPlanTripClick}
                 className="bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20 px-8 py-4 text-lg"
               >
                 Plan Your Trip
