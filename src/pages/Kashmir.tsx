@@ -1,0 +1,194 @@
+import { useNavigate } from "react-router-dom";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Star, MapPin, Clock, Users } from "lucide-react";
+import kashmirImage from "@/assets/Kashmir.jpg";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+
+const Kashmir = () => {
+  const navigate = useNavigate();
+
+  const kashmirTours = [
+    {
+      id: 1,
+      name: "Kashmir Paradise Valley Tour",
+      location: "Srinagar, Kashmir",
+      image: kashmirImage,
+      rating: 4.9,
+      reviews: 324,
+      duration: "6 Days",
+      groupSize: "4-12 People",
+      price: "₹22,999",
+      originalPrice: "₹29,999",
+      description: "Experience the breathtaking beauty of Kashmir with Dal Lake, Mughal Gardens, and snow-capped mountains.",
+      highlights: ["Dal Lake Shikara", "Mughal Gardens", "Gulmarg", "Pahalgam"],
+      slug: "kashmir-paradise-valley"
+    },
+    {
+      id: 2,
+      name: "Gulmarg Skiing Adventure",
+      location: "Gulmarg, Kashmir",
+      image: kashmirImage,
+      rating: 4.8,
+      reviews: 156,
+      duration: "4 Days",
+      groupSize: "2-8 People",
+      price: "₹18,999",
+      originalPrice: "₹24,999",
+      description: "Enjoy skiing and snowboarding in the pristine slopes of Gulmarg, Asia's finest ski destination.",
+      highlights: ["Gondola Ride", "Skiing", "Snow Activities", "Mountain Views"],
+      slug: "gulmarg-skiing-adventure"
+    },
+    {
+      id: 3,
+      name: "Pahalgam & Betaab Valley",
+      location: "Pahalgam, Kashmir",
+      image: kashmirImage,
+      rating: 4.7,
+      reviews: 189,
+      duration: "5 Days",
+      groupSize: "2-10 People",
+      price: "₹19,999",
+      originalPrice: "₹26,999",
+      description: "Explore the picturesque valleys of Pahalgam and Betaab, famous for their stunning natural beauty.",
+      highlights: ["Betaab Valley", "Aru Valley", "Chandanwari", "River Rafting"],
+      slug: "pahalgam-betaab-valley"
+    }
+  ];
+
+  const handleTourClick = (slug: string) => {
+    navigate(`/tour/${slug}`);
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <Navbar />
+      
+      {/* Hero Section */}
+      <div className="relative pt-20 pb-16 overflow-hidden">
+        <div className="absolute inset-0">
+          <img 
+            src={kashmirImage} 
+            alt="Kashmir Paradise" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30"></div>
+        </div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
+          <div className="text-center text-white">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6">
+              Paradise <span className="text-green-400">Kashmir</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+              Discover the crown jewel of India with pristine lakes, snow-capped mountains, and heavenly valleys
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Tours Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            Kashmir Tour Packages
+          </h2>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Experience the unparalleled beauty of Kashmir with our expertly crafted tour packages
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {kashmirTours.map((tour) => (
+            <Card key={tour.id} className="overflow-hidden hover:shadow-xl transition-all duration-300 group cursor-pointer" onClick={() => handleTourClick(tour.slug)}>
+              <div className="relative overflow-hidden">
+                <img 
+                  src={tour.image} 
+                  alt={tour.name}
+                  className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute top-4 left-4">
+                  <span className="bg-green-500 text-white px-2 py-1 rounded text-sm font-medium">
+                    Save ₹{(parseInt(tour.originalPrice.replace(/[₹,]/g, '')) - parseInt(tour.price.replace(/[₹,]/g, ''))).toLocaleString()}
+                  </span>
+                </div>
+              </div>
+              
+              <CardContent className="p-6">
+                <div className="flex items-center gap-2 text-sm text-gray-600 mb-2">
+                  <MapPin className="h-4 w-4" />
+                  <span>{tour.location}</span>
+                </div>
+                
+                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                  {tour.name}
+                </h3>
+                
+                <p className="text-gray-600 text-sm mb-4">
+                  {tour.description}
+                </p>
+
+                <div className="flex items-center gap-4 text-sm text-gray-600 mb-4">
+                  <div className="flex items-center gap-1">
+                    <Clock className="h-4 w-4" />
+                    <span>{tour.duration}</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <Users className="h-4 w-4" />
+                    <span>{tour.groupSize}</span>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1">
+                      <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                      <span className="font-medium">{tour.rating}</span>
+                    </div>
+                    <span className="text-sm text-gray-500">({tour.reviews} reviews)</span>
+                  </div>
+                </div>
+
+                <div className="mt-4 pt-4 border-t border-gray-200">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <span className="text-2xl font-bold text-green-600">{tour.price}</span>
+                      <span className="text-sm text-gray-500 line-through ml-2">{tour.originalPrice}</span>
+                      <p className="text-sm text-gray-500">per person</p>
+                    </div>
+                    <Button className="bg-blue-600 hover:bg-blue-700">
+                      View Details
+                    </Button>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        {/* Call to Action */}
+        <div className="text-center mt-16">
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">
+            Ready to Experience Paradise?
+          </h3>
+          <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
+            Book your Kashmir adventure today and witness the most beautiful place on Earth.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" className="bg-green-600 hover:bg-green-700">
+              Plan Your Trip
+            </Button>
+            <Button size="lg" variant="outline">
+              Contact Us
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      <Footer />
+    </div>
+  );
+};
+
+export default Kashmir;

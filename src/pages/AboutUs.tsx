@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import founderImage from "@/assets/IMG_4401.jpg";
 
 const AboutUs = () => {
   const navigate = useNavigate();
@@ -28,13 +29,6 @@ const AboutUs = () => {
       }
     }
   };
-
-  const stats = [
-    { icon: Users, number: "10,000+", label: "Happy Travelers" },
-    { icon: Globe, number: "50+", label: "Destinations" },
-    { icon: Star, number: "4.9", label: "Average Rating" },
-    { icon: Award, number: "100+", label: "Awards Won" }
-  ];
 
   const values = [
     {
@@ -63,7 +57,7 @@ const AboutUs = () => {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0">
           <img 
-            src="/src/assets/IMG_4401.jpg" 
+            src={founderImage} 
             alt="YashRaj Singh - Founder of WanderSaga" 
             className="w-full h-full object-cover object-center"
           />
@@ -203,35 +197,6 @@ const AboutUs = () => {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16 bg-gradient-to-r from-primary/5 to-orange-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            variants={stagger}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-8"
-          >
-            {stats.map((stat, index) => (
-              <motion.div
-                key={index}
-                variants={fadeInUp}
-                className="text-center group"
-              >
-                <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 group-hover:shadow-xl transition-all duration-300">
-                  <div className="bg-primary/10 w-16 h-16 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">
-                    <stat.icon className="w-8 h-8 text-primary" />
-                  </div>
-                  <p className="text-3xl font-bold text-gray-900 mb-2">{stat.number}</p>
-                  <p className="text-gray-600">{stat.label}</p>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
       {/* Founder Section */}
       <section className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -261,7 +226,7 @@ const AboutUs = () => {
                   {/* Image */}
                   <div className="relative h-96 md:h-auto">
                     <img 
-                      src="/src/assets/IMG_4401.jpg" 
+                      src={founderImage} 
                       alt="YashRaj Singh - Founder" 
                       className="w-full h-full object-cover"
                     />

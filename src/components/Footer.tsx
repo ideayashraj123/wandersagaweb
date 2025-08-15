@@ -147,13 +147,6 @@ const Footer = () => {
                 </p>
               </div>
 
-              {/* Awards/Certifications */}
-              <div className="mt-6 pt-6 border-t border-white/20">
-                <div className="flex items-center space-x-2 text-sm text-white/80">
-                  <Heart className="h-4 w-4 text-accent" />
-                  <span>Trusted by 500+ happy travelers</span>
-                </div>
-              </div>
             </div>
           </div>
         </div>

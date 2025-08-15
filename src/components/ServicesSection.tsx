@@ -1,11 +1,7 @@
 import { 
-  Plane, 
-  MapPin, 
   Camera, 
-  Shield, 
   Headphones, 
   Calendar,
-  Globe,
   Heart
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -13,34 +9,10 @@ import { Card, CardContent } from "@/components/ui/card";
 const ServicesSection = () => {
   const services = [
     {
-      icon: Plane,
-      title: "Flight Booking",
-      description: "Best deals on international and domestic flights with flexible booking options.",
-      features: ["24/7 Support", "Best Price Guarantee", "Flexible Dates"]
-    },
-    {
-      icon: MapPin,
-      title: "Hotel Reservations",
-      description: "Handpicked accommodations from luxury resorts to boutique stays worldwide.",
-      features: ["Verified Reviews", "Instant Confirmation", "Free Cancellation"]
-    },
-    {
       icon: Camera,
       title: "Guided Tours",
       description: "Expert local guides to help you discover hidden gems and cultural experiences.",
       features: ["Local Experts", "Small Groups", "Authentic Experiences"]
-    },
-    {
-      icon: Globe,
-      title: "Visa Assistance",
-      description: "Complete visa processing support for hassle-free international travel.",
-      features: ["Document Help", "Fast Processing", "Expert Guidance"]
-    },
-    {
-      icon: Shield,
-      title: "Travel Insurance",
-      description: "Comprehensive coverage to protect your journey from unexpected events.",
-      features: ["Medical Coverage", "Trip Protection", "24/7 Claims"]
     },
     {
       icon: Headphones,
@@ -81,7 +53,7 @@ const ServicesSection = () => {
         </div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 gap-4 md:gap-6">
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
@@ -90,31 +62,31 @@ const ServicesSection = () => {
                 className={`group bg-card hover:bg-gradient-card border-0 shadow-soft hover:shadow-medium transition-all duration-500 hover:-translate-y-1 rounded-2xl fade-in-up`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <CardContent className="p-6">
+                <CardContent className="p-4 md:p-6">
                   {/* Icon */}
-                  <div className="mb-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 group-hover:animate-pulse-glow">
-                      <Icon className="h-6 w-6 text-white" />
+                  <div className="mb-3 md:mb-4">
+                    <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 group-hover:animate-pulse-glow">
+                      <Icon className="h-5 w-5 md:h-6 md:w-6 text-white" />
                     </div>
                   </div>
 
                   {/* Content */}
-                  <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+                  <h3 className="text-sm md:text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
                     {service.title}
                   </h3>
                   
-                  <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
+                  <p className="text-muted-foreground text-xs md:text-sm mb-3 md:mb-4 leading-relaxed">
                     {service.description}
                   </p>
 
                   {/* Features */}
-                  <div className="space-y-2">
+                  <div className="space-y-1 md:space-y-2">
                     {service.features.map((feature, featureIndex) => (
                       <div 
                         key={featureIndex} 
                         className="flex items-center text-xs text-muted-foreground"
                       >
-                        <div className="w-1.5 h-1.5 bg-accent rounded-full mr-2"></div>
+                        <div className="w-1 h-1 md:w-1.5 md:h-1.5 bg-accent rounded-full mr-2"></div>
                         <span>{feature}</span>
                       </div>
                     ))}

@@ -14,6 +14,9 @@ import Uttarakhand from "./pages/Uttarakhand";
 import WeekendGetaways from "./pages/WeekendGetaways";
 import AboutUs from "./pages/AboutUs";
 import Disclaimer from "./pages/Disclaimer";
+import Rajasthan from "./pages/Rajasthan";
+import Kashmir from "./pages/Kashmir";
+import Ladakh from "./pages/Ladakh";
 
 // Optimize QueryClient for better performance
 const queryClient = new QueryClient({
@@ -39,6 +42,9 @@ const App = () => (
           <Route path="/spiti-valley" element={<SpitiValley />} />
           <Route path="/himachal" element={<Himachal />} />
           <Route path="/uttarakhand" element={<Uttarakhand />} />
+          <Route path="/rajasthan" element={<Rajasthan />} />
+          <Route path="/kashmir" element={<Kashmir />} />
+          <Route path="/ladakh" element={<Ladakh />} />
           <Route path="/weekend-getaways" element={<WeekendGetaways />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/disclaimer" element={<Disclaimer />} />

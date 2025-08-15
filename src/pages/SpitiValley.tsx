@@ -6,6 +6,8 @@ import mountainAdventure from "@/assets/mountain-adventure.jpg";
 import culturalHeritage from "@/assets/cultural-heritage.jpg";
 import heroBeach from "@/assets/hero-beach.jpg";
 import spitiValley from "@/assets/Spitivalley.jpg";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const SpitiValley = () => {
   const navigate = useNavigate();
@@ -89,18 +91,20 @@ const SpitiValley = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-      {/* Hero Section */}
-      <section className="pt-24 pb-16 bg-gradient-to-r from-primary/90 to-primary/80 relative overflow-hidden">
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat" 
-          style={{ backgroundImage: `url(${spitiValley})` }}
-        ></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl lg:text-6xl font-bold text-white mb-6">
-            Spiti Valley
-            <span className="block text-accent mt-2">Expeditions</span>
+    <div className="min-h-screen">
+      <Navbar />
+      <div className="bg-gradient-to-br from-slate-50 to-blue-50">
+        {/* Hero Section */}
+        <section className="pt-24 pb-16 bg-gradient-to-r from-primary/90 to-primary/80 relative overflow-hidden">
+          <div className="absolute inset-0 bg-black/20"></div>
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat" 
+            style={{ backgroundImage: `url(${spitiValley})` }}
+          ></div>
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 className="text-5xl lg:text-6xl font-bold text-white mb-6">
+              Spiti Valley
+              <span className="block text-accent mt-2">Expeditions</span>
           </h1>
           <p className="text-xl text-white/90 max-w-3xl mx-auto mb-8">
             Discover the mystical land of Spiti Valley, often called "Little Tibet". 
@@ -110,14 +114,6 @@ const SpitiValley = () => {
             <div className="flex items-center space-x-2">
               <MapPin className="h-5 w-5" />
               <span>Himachal Pradesh, India</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Star className="h-5 w-5 text-yellow-400" />
-              <span>4.8+ Average Rating</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Users className="h-5 w-5" />
-              <span>500+ Happy Travelers</span>
             </div>
           </div>
         </div>
@@ -231,6 +227,8 @@ const SpitiValley = () => {
           </div>
         </div>
       </section>
+      </div>
+      <Footer />
     </div>
   );
 };

@@ -3,6 +3,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Star, MapPin, Clock, Users } from "lucide-react";
 import himachalImage from "@/assets/Himachal.jpg";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const Himachal = () => {
   const navigate = useNavigate();
@@ -118,19 +120,21 @@ const Himachal = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-green-50">
-      {/* Hero Section */}
-      <section className="pt-24 pb-16 bg-gradient-to-r from-green-600/90 to-green-700/80 relative overflow-hidden">
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat" 
-          style={{ backgroundImage: `url(${himachalImage})` }}
-        ></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl lg:text-6xl font-bold text-white mb-6">
-            Himachal Pradesh
-            <span className="block text-accent mt-2">Adventures</span>
-          </h1>
+    <div className="min-h-screen">
+      <Navbar />
+      <div className="bg-gradient-to-br from-slate-50 to-green-50">
+        {/* Hero Section */}
+        <section className="pt-24 pb-16 bg-gradient-to-r from-green-600/90 to-green-700/80 relative overflow-hidden">
+          <div className="absolute inset-0 bg-black/20"></div>
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat" 
+            style={{ backgroundImage: `url(${himachalImage})` }}
+          ></div>
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 className="text-5xl lg:text-6xl font-bold text-white mb-6">
+              Himachal Pradesh
+              <span className="block text-accent mt-2">Adventures</span>
+            </h1>
           <p className="text-xl text-white/90 max-w-3xl mx-auto mb-8">
             Discover the diverse landscapes of Himachal Pradesh, from serene valleys to spiritual hubs. 
             Experience trekking, adventure sports, and the rich culture of the Himalayas.
@@ -139,14 +143,6 @@ const Himachal = () => {
             <div className="flex items-center space-x-2">
               <MapPin className="h-5 w-5" />
               <span>Himachal Pradesh, India</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Star className="h-5 w-5 text-yellow-400" />
-              <span>4.7+ Average Rating</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Users className="h-5 w-5" />
-              <span>1000+ Happy Travelers</span>
             </div>
           </div>
         </div>
@@ -260,6 +256,8 @@ const Himachal = () => {
           </div>
         </div>
       </section>
+      </div>
+      <Footer />
     </div>
   );
 };

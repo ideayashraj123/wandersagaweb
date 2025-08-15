@@ -5,6 +5,8 @@ import { Star, MapPin, Clock, Users, Calendar } from "lucide-react";
 import uttarakhandImage from "@/assets/Uttarakhand.jpg";
 import himachalImage from "@/assets/Himachal.jpg";
 import kashmirImage from "@/assets/Kashmir.jpg";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const WeekendGetaways = () => {
   const navigate = useNavigate();
@@ -206,35 +208,29 @@ const WeekendGetaways = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-purple-50">
-      {/* Hero Section */}
-      <section className="pt-24 pb-16 bg-gradient-to-r from-purple-600/90 to-indigo-700/80 relative overflow-hidden">
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat" 
-          style={{ backgroundImage: `url(${himachalImage})` }}
-        ></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl lg:text-6xl font-bold text-white mb-6">
-            Weekend
-            <span className="block text-accent mt-2">Getaways</span>
-          </h1>
-          <p className="text-xl text-white/90 max-w-3xl mx-auto mb-8">
-            Escape the routine with perfect weekend adventures. From spiritual journeys to relaxing hill stations, 
+    <div className="min-h-screen">
+      <Navbar />
+      <div className="bg-gradient-to-br from-slate-50 to-purple-50">
+        {/* Hero Section */}
+        <section className="pt-24 pb-16 bg-gradient-to-r from-purple-600/90 to-indigo-700/80 relative overflow-hidden">
+          <div className="absolute inset-0 bg-black/20"></div>
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat" 
+            style={{ backgroundImage: `url(${himachalImage})` }}
+          ></div>
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 className="text-5xl lg:text-6xl font-bold text-white mb-6">
+              Weekend
+              <span className="block text-accent mt-2">Getaways</span>
+            </h1>
+            <p className="text-xl text-white/90 max-w-3xl mx-auto mb-8">
+              Escape the routine with perfect weekend adventures. From spiritual journeys to relaxing hill stations, 
             discover destinations that rejuvenate your soul in just a few days.
           </p>
           <div className="flex flex-wrap justify-center gap-4 text-white/90">
             <div className="flex items-center space-x-2">
               <Calendar className="h-5 w-5" />
               <span>2-6 Days Perfect Getaways</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Star className="h-5 w-5 text-yellow-400" />
-              <span>4.7+ Average Rating</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Users className="h-5 w-5" />
-              <span>1500+ Happy Travelers</span>
             </div>
           </div>
         </div>
@@ -378,6 +374,8 @@ const WeekendGetaways = () => {
           </div>
         </div>
       </section>
+      </div>
+      <Footer />
     </div>
   );
 };

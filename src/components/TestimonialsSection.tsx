@@ -89,8 +89,7 @@ const TestimonialsSection = () => {
             💬 What Our Travelers Say
           </span>
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            Real Stories from
-            <span className="block text-gradient">Happy Travelers</span>
+            Real Stories from Our Travelers
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Don't just take our word for it. Hear from our satisfied customers who have 
@@ -182,26 +181,6 @@ const TestimonialsSection = () => {
               }`}
             />
           ))}
-        </div>
-
-        {/* Stats Section */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 fade-in-up">
-          <div className="text-center">
-            <div className="text-4xl font-bold text-primary mb-2">500+</div>
-            <div className="text-muted-foreground">Happy Customers</div>
-          </div>
-          <div className="text-center">
-            <div className="text-4xl font-bold text-accent mb-2">4.9/5</div>
-            <div className="text-muted-foreground">Average Rating</div>
-          </div>
-          <div className="text-center">
-            <div className="text-4xl font-bold text-secondary mb-2">50+</div>
-            <div className="text-muted-foreground">Destinations</div>
-          </div>
-          <div className="text-center">
-            <div className="text-4xl font-bold text-primary mb-2">24/7</div>
-            <div className="text-muted-foreground">Support</div>
-          </div>
         </div>
       </div>
     </section>

@@ -1,17 +1,94 @@
-import { useState, useMemo, memo } from "react";
-import { Search, MapPin, Calendar, Users, Sparkles } from "lucide-react";
+import { useState, useMemo, memo, useRef, useEffect } from "react";
+import { Search, MapPin, Calendar, Users, Sparkles, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useNavigate } from "react-router-dom";
 import heroBeach from "@/assets/hero-beach.jpg";
 
 const HeroSection = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [selectedDestination, setSelectedDestination] = useState("");
+  const navigate = useNavigate();
+  const searchRef = useRef<HTMLDivElement>(null);
+
+  // Available destinations that match the navbar
+  const destinations = useMemo(() => [
+    { name: "Spiti Valley", path: "/spiti-valley", searchTerms: ["spiti", "valley", "spiti valley"] },
+    { name: "Himachal Pradesh", path: "/himachal", searchTerms: ["himachal", "himachal pradesh", "hp", "kasol"] },
+    { name: "Uttarakhand", path: "/uttarakhand", searchTerms: ["uttarakhand", "uk"] },
+    { name: "Rajasthan", path: "/rajasthan", searchTerms: ["rajasthan", "rajsthan"] },
+    { name: "Kashmir", path: "/kashmir", searchTerms: ["kashmir", "j&k"] },
+    { name: "Ladakh", path: "/ladakh", searchTerms: ["ladakh"] },
+  ], []);
 
   // Memoize popular destinations to prevent recreation
   const popularDestinations = useMemo(() => [
-    "Dubai", "Thailand", "Vietnam", "Kashmir", "Ladakh", "Manali", "Goa", "Kerala"
+    "Spiti Valley", "Kasol", "Uttarakhand", "Rajasthan"
   ], []);
+
+  // Filter destinations based on search query
+  const filteredDestinations = useMemo(() => {
+    if (!searchQuery.trim()) return destinations;
+    
+    return destinations.filter(dest => 
+      dest.searchTerms.some(term => 
+        term.toLowerCase().includes(searchQuery.toLowerCase())
+      ) || dest.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  }, [searchQuery, destinations]);
+
+  // Handle search input change
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setSearchQuery(value);
+    setIsDropdownOpen(value.length > 0);
+  };
+
+  // Handle destination selection
+  const handleDestinationSelect = (destination: typeof destinations[0]) => {
+    setSearchQuery(destination.name);
+    setSelectedDestination(destination.path);
+    setIsDropdownOpen(false);
+  };
+
+  // Handle Find Your Adventure button click
+  const handleFindAdventure = () => {
+    if (selectedDestination && selectedDestination !== "/") {
+      navigate(selectedDestination);
+    } else if (searchQuery.trim()) {
+      // Try to find a matching destination
+      const matchedDestination = destinations.find(dest => 
+        dest.searchTerms.some(term => 
+          term.toLowerCase() === searchQuery.toLowerCase()
+        ) || dest.name.toLowerCase() === searchQuery.toLowerCase()
+      );
+      
+      if (matchedDestination) {
+        navigate(matchedDestination.path);
+      } else {
+        // If no match found, show a message or navigate to homepage
+        console.log("Destination not found");
+        // You can add a toast notification here if needed
+      }
+    } else {
+      // If no search query, navigate to explore page or show destinations
+      navigate('/');
+    }
+  };
+
+  // Handle click outside to close dropdown
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   return (
     <div className="relative min-h-screen flex items-center overflow-hidden">
@@ -32,13 +109,6 @@ const HeroSection = () => {
 
       {/* Floating Elements */}
       {/* Removed Premium Experience floating button */}
-
-      <div className="absolute bottom-32 right-20 glass-card p-3 float stagger-2 hidden lg:block">
-        <div className="text-center">
-          <div className="text-2xl font-bold text-white">500+</div>
-          <div className="text-sm text-white/80">Happy Travelers</div>
-        </div>
-      </div>
 
       {/* Main Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
@@ -71,22 +141,6 @@ const HeroSection = () => {
                 Plan Your Trip
               </Button>
             </div>
-
-            {/* Quick Stats */}
-            <div className="grid grid-cols-3 gap-6 fade-in-up stagger-2">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-accent">50+</div>
-                <div className="text-sm text-white/80">Destinations</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-accent">500+</div>
-                <div className="text-sm text-white/80">Happy Clients</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-accent">24/7</div>
-                <div className="text-sm text-white/80">Support</div>
-              </div>
-            </div>
           </div>
 
           {/* Right Content - Search Form */}
@@ -99,14 +153,38 @@ const HeroSection = () => {
                   <label className="block text-white/80 text-sm font-medium mb-2">
                     Where do you want to go?
                   </label>
-                  <div className="relative">
-                    <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                  <div className="relative" ref={searchRef}>
+                    <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground z-10" />
                     <Input
                       placeholder="Search destinations..."
                       value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      className="pl-10 bg-white/10 backdrop-blur-sm border-white/20 text-white placeholder:text-white/60"
+                      onChange={handleSearchChange}
+                      onFocus={() => setIsDropdownOpen(searchQuery.length > 0)}
+                      className="pl-10 pr-10 bg-white/10 backdrop-blur-sm border-white/20 text-white placeholder:text-white/60"
                     />
+                    <ChevronDown className={`absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-white/60 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} />
+                    
+                    {/* Dropdown */}
+                    {isDropdownOpen && (
+                      <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-lg shadow-xl border border-gray-200 z-50 max-h-60 overflow-y-auto">
+                        {filteredDestinations.length > 0 ? (
+                          filteredDestinations.map((destination, index) => (
+                            <button
+                              key={index}
+                              onClick={() => handleDestinationSelect(destination)}
+                              className="w-full text-left px-4 py-3 hover:bg-gray-50 transition-colors duration-200 text-gray-800 hover:text-primary border-b border-gray-100 last:border-b-0 flex items-center space-x-2"
+                            >
+                              <MapPin className="h-4 w-4 text-gray-400" />
+                              <span className="font-medium">{destination.name}</span>
+                            </button>
+                          ))
+                        ) : (
+                          <div className="px-4 py-3 text-gray-500 text-sm">
+                            No destinations found
+                          </div>
+                        )}
+                      </div>
+                    )}
                   </div>
                 </div>
 
@@ -142,7 +220,10 @@ const HeroSection = () => {
                   </div>
                 </div>
 
-                <Button className="w-full btn-hero text-lg py-3">
+                <Button 
+                  className="w-full btn-hero text-lg py-3"
+                  onClick={handleFindAdventure}
+                >
                   <Search className="h-5 w-5 mr-2" />
                   Find Your Adventure
                 </Button>
@@ -150,9 +231,23 @@ const HeroSection = () => {
                 <div className="pt-4">
                   <p className="text-white/60 text-sm mb-3">Popular destinations:</p>
                   <div className="flex flex-wrap gap-2">
-                    {popularDestinations.slice(0, 4).map((dest) => (
+                    {popularDestinations.map((dest) => (
                       <button
                         key={dest}
+                        onClick={() => {
+                          setSearchQuery(dest);
+                          // Find if this destination has a specific route
+                          const matchedDestination = destinations.find(d => 
+                            d.name.toLowerCase().includes(dest.toLowerCase()) || 
+                            d.searchTerms.some(term => term.toLowerCase().includes(dest.toLowerCase()))
+                          );
+                          if (matchedDestination) {
+                            setSelectedDestination(matchedDestination.path);
+                          } else if (dest.toLowerCase() === "kasol") {
+                            // Kasol is part of Himachal Pradesh
+                            setSelectedDestination("/himachal");
+                          }
+                        }}
                         className="px-3 py-1 bg-white/10 backdrop-blur-sm border border-white/20 text-white/80 text-xs rounded-full hover:bg-white/20 transition-colors"
                       >
                         {dest}

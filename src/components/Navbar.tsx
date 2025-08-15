@@ -64,6 +64,24 @@ const Navbar = () => {
     { name: "Tirthan Jibhi Valley", slug: "tirthan-jibhi-adventure" },
   ];
 
+  const rajasthanTours: SpitiTour[] = [
+    { name: "Royal Rajasthan Heritage Tour", slug: "royal-rajasthan-heritage" },
+    { name: "Jaisalmer Desert Safari", slug: "jaisalmer-desert-safari" },
+    { name: "Udaipur Lakes & Palaces", slug: "udaipur-lakes-palaces" },
+  ];
+
+  const kashmirTours: SpitiTour[] = [
+    { name: "Kashmir Paradise Valley Tour", slug: "kashmir-paradise-valley" },
+    { name: "Gulmarg Skiing Adventure", slug: "gulmarg-skiing-adventure" },
+    { name: "Pahalgam & Betaab Valley", slug: "pahalgam-betaab-valley" },
+  ];
+
+  const ladakhTours: SpitiTour[] = [
+    { name: "Leh Ladakh Adventure Expedition", slug: "leh-ladakh-adventure" },
+    { name: "Pangong Lake & Nubra Valley", slug: "pangong-nubra-valley" },
+    { name: "Ladakh Bike Expedition", slug: "ladakh-bike-expedition" },
+  ];
+
   const navItems: NavItem[] = [
     { 
       name: "Spiti Valley", 

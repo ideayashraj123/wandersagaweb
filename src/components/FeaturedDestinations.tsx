@@ -116,7 +116,9 @@ const FeaturedDestinations = () => {
       clearTimeout(timeoutId);
       timeoutId = setTimeout(() => {
         const width = window.innerWidth;
-        if (width >= 1024) {
+        if (width >= 1280) {
+          setCardsPerView(3);
+        } else if (width >= 1024) {
           setCardsPerView(3);
         } else if (width >= 768) {
           setCardsPerView(2);
@@ -133,6 +135,14 @@ const FeaturedDestinations = () => {
       clearTimeout(timeoutId);
     };
   }, []);
+
+  // Reset currentIndex when cardsPerView changes to prevent out-of-bounds
+  useEffect(() => {
+    const maxIndex = Math.max(0, destinations.length - cardsPerView);
+    if (currentIndex > maxIndex) {
+      setCurrentIndex(0);
+    }
+  }, [cardsPerView, destinations.length, currentIndex]);
 
   return (
     <section id="featured-destinations" className="py-20 bg-muted/30">
@@ -153,12 +163,12 @@ const FeaturedDestinations = () => {
         </div>
 
         {/* Destinations Carousel */}
-        <div className="relative px-12 md:px-16">
+        <div className="relative px-4 sm:px-8 md:px-12 lg:px-16">
           {/* Navigation Arrows */}
           <Button
             variant="outline"
             size="icon"
-            className="absolute left-0 top-1/3 -translate-y-1/2 z-10 bg-white/95 backdrop-blur-sm border-white/30 hover:bg-white hover:scale-110 shadow-lg transition-all duration-300 hidden md:flex"
+            className="absolute left-0 sm:left-4 md:left-8 lg:left-12 top-1/3 -translate-y-1/2 z-10 bg-white/95 backdrop-blur-sm border-white/30 hover:bg-white hover:scale-110 shadow-lg transition-all duration-300 hidden md:flex"
             onClick={goToPrev}
           >
             <ChevronLeft className="h-4 w-4" />
@@ -167,7 +177,7 @@ const FeaturedDestinations = () => {
           <Button
             variant="outline"
             size="icon"
-            className="absolute right-0 top-1/3 -translate-y-1/2 z-10 bg-white/95 backdrop-blur-sm border-white/30 hover:bg-white hover:scale-110 shadow-lg transition-all duration-300 hidden md:flex"
+            className="absolute right-0 sm:right-4 md:right-8 lg:right-12 top-1/3 -translate-y-1/2 z-10 bg-white/95 backdrop-blur-sm border-white/30 hover:bg-white hover:scale-110 shadow-lg transition-all duration-300 hidden md:flex"
             onClick={goToNext}
           >
             <ChevronRight className="h-4 w-4" />
@@ -182,24 +192,23 @@ const FeaturedDestinations = () => {
               className="flex transition-transform duration-700 ease-in-out"
               style={{
                 transform: `translateX(-${currentIndex * (100 / cardsPerView)}%)`,
-                width: `${(destinations.length / cardsPerView) * 100}%`
               }}
             >
               {destinations.map((destination, index) => (
                 <div
                   key={destination.id}
-                  className="w-full flex-shrink-0 px-4"
-                  style={{ width: `${100 / destinations.length}%` }}
+                  className="flex-shrink-0 px-2 sm:px-3 md:px-4"
+                  style={{ width: `${100 / cardsPerView}%` }}
                 >
                   <Card 
-                    className={`group overflow-hidden bg-card shadow-soft hover:shadow-large transition-all duration-500 hover:-translate-y-2 border-0 rounded-3xl fade-in-up h-full flex flex-col cursor-pointer`}
+                    className={`group overflow-hidden bg-card shadow-soft hover:shadow-large transition-all duration-500 hover:-translate-y-2 border-0 rounded-2xl sm:rounded-3xl fade-in-up h-full flex flex-col cursor-pointer`}
                     onClick={() => handleDestinationClick(destination.tourSlug)}
                   >
                     <div className="relative overflow-hidden">
                       <img 
                         src={destination.image} 
                         alt={destination.name}
-                        className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700"
+                        className="w-full h-48 sm:h-56 md:h-64 object-cover group-hover:scale-110 transition-transform duration-700"
                         loading="lazy"
                         decoding="async"
                         style={{
@@ -209,16 +218,16 @@ const FeaturedDestinations = () => {
                       />
                       
                       {/* Category Badge */}
-                      <div className={`absolute top-4 left-4 ${getCategoryColor(destination.category)} text-white px-3 py-1 rounded-full text-sm font-medium`}>
+                      <div className={`absolute top-3 sm:top-4 left-3 sm:left-4 ${getCategoryColor(destination.category)} text-white px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium`}>
                         {destination.category}
                       </div>
                       
                       {/* Price Badge */}
-                      <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-2xl p-3">
-                        <div className="text-sm text-muted-foreground line-through">
+                      <div className="absolute top-3 sm:top-4 right-3 sm:right-4 bg-white/90 backdrop-blur-sm rounded-xl sm:rounded-2xl p-2 sm:p-3">
+                        <div className="text-xs sm:text-sm text-muted-foreground line-through">
                           {destination.originalPrice}
                         </div>
-                        <div className="text-lg font-bold text-primary">
+                        <div className="text-sm sm:text-lg font-bold text-primary">
                           {destination.price}
                         </div>
                       </div>
@@ -227,31 +236,31 @@ const FeaturedDestinations = () => {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
 
-                    <CardContent className="p-6 flex-1 flex flex-col">
+                    <CardContent className="p-4 sm:p-5 md:p-6 flex-1 flex flex-col">
                       <div className="flex-1">
                         <div className="mb-2">
-                          <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+                          <h3 className="text-lg sm:text-xl font-bold text-foreground group-hover:text-primary transition-colors line-clamp-2">
                             {destination.name}
                           </h3>
                         </div>
                         
-                        <div className="flex items-center text-muted-foreground mb-3">
-                          <MapPin className="h-4 w-4 mr-1" />
-                          <span className="text-sm">{destination.location}</span>
+                        <div className="flex items-center text-muted-foreground mb-2 sm:mb-3">
+                          <MapPin className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
+                          <span className="text-xs sm:text-sm">{destination.location}</span>
                         </div>
 
-                        <div className="flex items-center text-sm text-muted-foreground mb-4">
-                          <Clock className="h-4 w-4 mr-1" />
+                        <div className="flex items-center text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4">
+                          <Clock className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
                           <span>{destination.duration}</span>
                         </div>
 
                         {/* Highlights */}
-                        <div className="mb-6">
-                          <div className="flex flex-wrap gap-2">
+                        <div className="mb-4 sm:mb-6">
+                          <div className="flex flex-wrap gap-1 sm:gap-2">
                             {destination.highlights.map((highlight) => (
                               <span 
                                 key={highlight}
-                                className="px-3 py-1 bg-accent/10 text-accent text-xs rounded-full"
+                                className="px-2 sm:px-3 py-1 bg-accent/10 text-accent text-xs rounded-full"
                               >
                                 {highlight}
                               </span>
@@ -261,7 +270,7 @@ const FeaturedDestinations = () => {
                       </div>
 
                       <Button 
-                        className="w-full btn-hero group-hover:scale-105 transition-transform mt-auto"
+                        className="w-full btn-hero group-hover:scale-105 transition-transform mt-auto text-sm sm:text-base py-2 sm:py-3"
                         onClick={(e) => {
                           e.stopPropagation();
                           handleDestinationClick(destination.tourSlug);

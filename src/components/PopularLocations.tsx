@@ -100,11 +100,13 @@ const PopularLocations = () => {
       clearTimeout(timeoutId);
       timeoutId = setTimeout(() => {
         const width = window.innerWidth;
-        if (width >= 1024) {
+        if (width >= 1280) {
           setCardsPerView(5);
+        } else if (width >= 1024) {
+          setCardsPerView(4);
         } else if (width >= 768) {
           setCardsPerView(3);
-        } else if (width >= 640) {
+        } else if (width >= 480) {
           setCardsPerView(2);
         } else {
           setCardsPerView(1);
@@ -154,19 +156,19 @@ const PopularLocations = () => {
           <Button
             variant="outline"
             size="icon"
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white/90 backdrop-blur-sm border-white/20 hover:bg-white shadow-lg"
+            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-10 bg-white/90 backdrop-blur-sm border-white/20 hover:bg-white shadow-lg h-8 w-8 sm:h-10 sm:w-10"
             onClick={goToPrev}
           >
-            <ChevronLeft className="h-4 w-4" />
+            <ChevronLeft className="h-3 w-3 sm:h-4 sm:w-4" />
           </Button>
           
           <Button
             variant="outline"
             size="icon"
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-white/90 backdrop-blur-sm border-white/20 hover:bg-white shadow-lg"
+            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-10 bg-white/90 backdrop-blur-sm border-white/20 hover:bg-white shadow-lg h-8 w-8 sm:h-10 sm:w-10"
             onClick={goToNext}
           >
-            <ChevronRight className="h-4 w-4" />
+            <ChevronRight className="h-3 w-3 sm:h-4 sm:w-4" />
           </Button>
 
           {/* Carousel */}
@@ -180,14 +182,16 @@ const PopularLocations = () => {
               className="flex transition-transform duration-700 ease-in-out"
               style={{
                 transform: `translateX(-${currentIndex * (100 / cardsPerView)}%)`,
-                width: `${(locations.length / cardsPerView) * 100}%`
               }}
             >
 
               {locations.map((location) => (
                 <div
                   key={location.id}
-                  className="w-full max-w-xs mx-auto sm:w-1/2 md:w-1/3 lg:w-1/5 px-3 flex-shrink-0"
+                  className="flex-shrink-0 px-2 sm:px-3"
+                  style={{
+                    width: `${100 / cardsPerView}%`
+                  }}
                 >
                   <Card onClick={() => {
                     if (location.name === "Spiti Valley") {
@@ -206,7 +210,7 @@ const PopularLocations = () => {
                     } else {
                       navigate(`/tour/${location.name.toLowerCase().includes('himachal') ? 'himachal-pradesh' : location.name.toLowerCase()}`);
                     }
-                  }} className="group relative overflow-hidden bg-white/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2 cursor-pointer h-80">
+                  }} className="group relative overflow-hidden bg-white/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2 cursor-pointer h-64 sm:h-72 lg:h-80">
                     <div className="relative h-full overflow-hidden rounded-xl">
                       <img 
                         src={location.image} 
@@ -224,17 +228,17 @@ const PopularLocations = () => {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
                       
                       {/* Content */}
-                      <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                        <h3 className="text-xl font-bold mb-2 group-hover:text-accent transition-colors duration-300">
+                      <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 lg:p-6 text-white">
+                        <h3 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2 group-hover:text-accent transition-colors duration-300">
                           {location.name}
                         </h3>
-                        <p className="text-sm text-white/80 mb-3">
+                        <p className="text-xs sm:text-sm text-white/80 mb-2 sm:mb-3">
                           {location.description}
                         </p>
                         <Button 
                           variant="outline"
                           size="sm" 
-                          className="text-white border-white/30 bg-white/10 hover:bg-white hover:text-black transition-all duration-300"
+                          className="text-white border-white/30 bg-white/10 hover:bg-white hover:text-black transition-all duration-300 text-xs sm:text-sm px-2 py-1 sm:px-3 sm:py-2"
                           onClick={(e) => {
                             e.stopPropagation();
                             if (location.name === "Spiti Valley") {
