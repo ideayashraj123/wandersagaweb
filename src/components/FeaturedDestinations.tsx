@@ -2,14 +2,15 @@ import { Star, MapPin, Clock, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useState, useEffect, useRef, useCallback, useMemo, memo } from "react";
+import { useNavigate } from "react-router-dom";
 import mountainAdventure from "@/assets/mountain-adventure.jpg";
 import culturalHeritage from "@/assets/cultural-heritage.jpg";
 import heroBeach from "@/assets/hero-beach.jpg";
 import spitiValley from "@/assets/Spitivalley.jpg";
 
 const FeaturedDestinations = () => {
+  const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [cardsPerView, setCardsPerView] = useState(3);
   const carouselRef = useRef<HTMLDivElement>(null);
 
@@ -27,21 +28,23 @@ const FeaturedDestinations = () => {
       price: "₹89,999",
       originalPrice: "₹1,19,999",
       highlights: ["Snow Adventures", "Frozen Waterfalls", "Winter Monasteries"],
-      category: "Adventure"
+      category: "Adventure",
+      tourSlug: "winter-spiti-expedition"
     },
     {
       id: 2,
       name: "Summer Spiti Circuit with Chandrataal",
       location: "Spiti Valley, India",
       image: mountainAdventure,
-      rating: 4.8,
-      reviews: 189,
-      duration: "7-10 Days",
+      rating: 4.9,
+      reviews: 156,
+      duration: "6N/7D",
       groupSize: "4-12 People",
-      price: "₹45,999",
-      originalPrice: "₹59,999",
-      highlights: ["Chandrataal Lake", "High Altitude Desert", "Ancient Monasteries"],
-      category: "Adventure"
+      price: "₹19,499",
+      originalPrice: "₹24,999",
+      highlights: ["Chandrataal Lake", "World's Highest Post Office", "Fossil Park at Langza"],
+      category: "Adventure",
+      tourSlug: "summer-spiti-circuit-chandrataal"
     },
     {
       id: 3,
@@ -52,10 +55,11 @@ const FeaturedDestinations = () => {
       reviews: 156,
       duration: "6-8 Days",
       groupSize: "2-6 People",
-      price: "₹35,999",
-      originalPrice: "₹49,999",
-      highlights: ["Bike Adventure", "Mountain Passes", "Local Villages"],
-      category: "Adventure"
+      price: "₹29,999",
+      originalPrice: "₹35,999",
+      highlights: ["Ultimate Biking Adventure", "High Passes", "Mechanical Backup"],
+      category: "Adventure",
+      tourSlug: "spiti-valley-bike-expedition"
     },
     {
       id: 4,
@@ -64,12 +68,13 @@ const FeaturedDestinations = () => {
       image: spitiValley,
       rating: 4.9,
       reviews: 112,
-      duration: "6-8 Days",
+      duration: "5 Days",
       groupSize: "4-10 People",
       price: "₹13,999",
       originalPrice: "₹18,999",
-      highlights: ["High Altitude Desert", "Ancient Monasteries", "Adventure Drive"],
-      category: "Adventure"
+      highlights: ["Chandrataal Lake", "Rohtang Pass", "Kaza Exploration"],
+      category: "Adventure",
+      tourSlug: "short-circuit-summer-spiti"
     }
   ], []);
 
@@ -83,23 +88,24 @@ const FeaturedDestinations = () => {
     }
   }, []);
 
+  // Handle destination click
+  const handleDestinationClick = useCallback((tourSlug: string) => {
+    navigate(`/tour/${tourSlug}`);
+  }, [navigate]);
+
   // Optimized navigation functions with useCallback
   const goToNext = useCallback(() => {
-    setIsAutoPlaying(false);
     setCurrentIndex((prevIndex) => {
       const maxIndex = Math.max(0, destinations.length - cardsPerView);
       return prevIndex >= maxIndex ? 0 : prevIndex + 1;
     });
-    setTimeout(() => setIsAutoPlaying(true), 5000);
   }, [destinations.length, cardsPerView]);
 
   const goToPrev = useCallback(() => {
-    setIsAutoPlaying(false);
     setCurrentIndex((prevIndex) => {
       const maxIndex = Math.max(0, destinations.length - cardsPerView);
       return prevIndex <= 0 ? maxIndex : prevIndex - 1;
     });
-    setTimeout(() => setIsAutoPlaying(true), 5000);
   }, [destinations.length, cardsPerView]);
 
   // Determine cards visible per view responsively with debouncing
@@ -128,22 +134,8 @@ const FeaturedDestinations = () => {
     };
   }, []);
 
-  // Auto-scroll functionality with optimized cleanup
-  useEffect(() => {
-    if (!isAutoPlaying) return;
-
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => {
-        const maxIndex = Math.max(0, destinations.length - cardsPerView);
-        return prevIndex >= maxIndex ? 0 : prevIndex + 1;
-      });
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, [isAutoPlaying, destinations.length, cardsPerView]);
-
   return (
-    <section className="py-20 bg-muted/30">
+    <section id="featured-destinations" className="py-20 bg-muted/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16 fade-in-up">
@@ -161,12 +153,12 @@ const FeaturedDestinations = () => {
         </div>
 
         {/* Destinations Carousel */}
-        <div className="relative">
+        <div className="relative px-12 md:px-16">
           {/* Navigation Arrows */}
           <Button
             variant="outline"
             size="icon"
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white/90 backdrop-blur-sm border-white/20 hover:bg-white shadow-lg"
+            className="absolute left-0 top-1/3 -translate-y-1/2 z-10 bg-white/95 backdrop-blur-sm border-white/30 hover:bg-white hover:scale-110 shadow-lg transition-all duration-300 hidden md:flex"
             onClick={goToPrev}
           >
             <ChevronLeft className="h-4 w-4" />
@@ -175,7 +167,7 @@ const FeaturedDestinations = () => {
           <Button
             variant="outline"
             size="icon"
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-white/90 backdrop-blur-sm border-white/20 hover:bg-white shadow-lg"
+            className="absolute right-0 top-1/3 -translate-y-1/2 z-10 bg-white/95 backdrop-blur-sm border-white/30 hover:bg-white hover:scale-110 shadow-lg transition-all duration-300 hidden md:flex"
             onClick={goToNext}
           >
             <ChevronRight className="h-4 w-4" />
@@ -185,8 +177,6 @@ const FeaturedDestinations = () => {
           <div 
             ref={carouselRef}
             className="overflow-hidden rounded-2xl"
-            onMouseEnter={() => setIsAutoPlaying(false)}
-            onMouseLeave={() => setIsAutoPlaying(true)}
           >
             <div 
               className="flex transition-transform duration-700 ease-in-out"
@@ -202,7 +192,8 @@ const FeaturedDestinations = () => {
                   style={{ width: `${100 / destinations.length}%` }}
                 >
                   <Card 
-                    className={`group overflow-hidden bg-card shadow-soft hover:shadow-large transition-all duration-500 hover:-translate-y-2 border-0 rounded-3xl fade-in-up h-full flex flex-col`}
+                    className={`group overflow-hidden bg-card shadow-soft hover:shadow-large transition-all duration-500 hover:-translate-y-2 border-0 rounded-3xl fade-in-up h-full flex flex-col cursor-pointer`}
+                    onClick={() => handleDestinationClick(destination.tourSlug)}
                   >
                     <div className="relative overflow-hidden">
                       <img 
@@ -269,7 +260,13 @@ const FeaturedDestinations = () => {
                         </div>
                       </div>
 
-                      <Button className="w-full btn-hero group-hover:scale-105 transition-transform mt-auto">
+                      <Button 
+                        className="w-full btn-hero group-hover:scale-105 transition-transform mt-auto"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleDestinationClick(destination.tourSlug);
+                        }}
+                      >
                         Book Now
                       </Button>
                     </CardContent>
@@ -280,30 +277,44 @@ const FeaturedDestinations = () => {
           </div>
 
           {/* Progress Indicators */}
-          <div className="flex justify-center space-x-2 mt-8">
-            {Array.from({ length: Math.max(1, destinations.length - cardsPerView + 1) }).map((_, index) => (
-              <button
-                key={index}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentIndex 
-                    ? 'bg-primary shadow-lg' 
-                    : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
-                }`}
-                onClick={() => {
-                  setCurrentIndex(index);
-                  setIsAutoPlaying(false);
-                  setTimeout(() => setIsAutoPlaying(true), 5000);
-                }}
-              />
-            ))}
-          </div>
-        </div>
+          <div className="flex justify-center items-center space-x-4 mt-8">
+            {/* Mobile Navigation Arrows */}
+            <Button
+              variant="outline"
+              size="sm"
+              className="md:hidden bg-white/90 backdrop-blur-sm border-white/30 hover:bg-white shadow-lg"
+              onClick={goToPrev}
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </Button>
 
-        {/* Auto-play Status */}
-        <div className="text-center mt-6">
-          <p className="text-sm text-muted-foreground">
-            {isAutoPlaying ? "Auto-playing • Hover to pause" : "Auto-play paused"}
-          </p>
+            {/* Dots */}
+            <div className="flex space-x-2">
+              {Array.from({ length: Math.max(1, destinations.length - cardsPerView + 1) }).map((_, index) => (
+                <button
+                  key={index}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    index === currentIndex 
+                      ? 'bg-primary shadow-lg' 
+                      : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
+                  }`}
+                  onClick={() => {
+                    setCurrentIndex(index);
+                  }}
+                />
+              ))}
+            </div>
+
+            {/* Mobile Navigation Arrows */}
+            <Button
+              variant="outline"
+              size="sm"
+              className="md:hidden bg-white/90 backdrop-blur-sm border-white/30 hover:bg-white shadow-lg"
+              onClick={goToNext}
+            >
+              <ChevronRight className="h-4 w-4" />
+            </Button>
+          </div>
         </div>
 
         {/* View All Button */}

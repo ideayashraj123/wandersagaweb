@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -28,7 +29,11 @@ const Footer = () => {
   ];
 
   const policies = [
-    "Privacy Policy", "Terms & Conditions", "Cancellation Policy", "Refund Policy"
+    { name: "Privacy Policy", link: "#" },
+    { name: "Terms & Conditions", link: "#" },
+    { name: "Disclaimer", link: "/disclaimer" },
+    { name: "Cancellation Policy", link: "#" },
+    { name: "Refund Policy", link: "#" }
   ];
 
   return (
@@ -48,7 +53,7 @@ const Footer = () => {
             <div className="space-y-6">
               <div className="flex items-center space-x-2">
                 <Plane className="h-8 w-8" />
-                <span className="text-2xl font-bold">TravelLux</span>
+                <span className="text-2xl font-bold">WanderSaga</span>
               </div>
               
               <p className="text-white/80 leading-relaxed">
@@ -158,18 +163,28 @@ const Footer = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
               <div className="text-sm text-white/80">
-                © 2024 TravelLux. All rights reserved. Made with ❤️ for travelers.
+                © 2024 . All rights reserved. Made with ❤️ for travelers.
               </div>
               
               <div className="flex flex-wrap items-center gap-6">
                 {policies.map((policy) => (
-                  <a 
-                    key={policy}
-                    href="#" 
-                    className="text-sm text-white/80 hover:text-white transition-colors"
-                  >
-                    {policy}
-                  </a>
+                  policy.link.startsWith('/') ? (
+                    <Link 
+                      key={policy.name}
+                      to={policy.link} 
+                      className="text-sm text-white/80 hover:text-white transition-colors"
+                    >
+                      {policy.name}
+                    </Link>
+                  ) : (
+                    <a 
+                      key={policy.name}
+                      href={policy.link} 
+                      className="text-sm text-white/80 hover:text-white transition-colors"
+                    >
+                      {policy.name}
+                    </a>
+                  )
                 ))}
               </div>
             </div>

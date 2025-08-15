@@ -14,7 +14,7 @@ const TestimonialsSection = () => {
       location: "Mumbai, India",
       image: happyTravelers,
       rating: 5,
-      text: "TravelLux made our Maldives honeymoon absolutely magical! Every detail was perfect, from the overwater villa to the private dining experiences. The team went above and beyond to ensure our trip was unforgettable.",
+      text: "WanderSaga made our Maldives honeymoon absolutely magical! Every detail was perfect, from the overwater villa to the private dining experiences. The team went above and beyond to ensure our trip was unforgettable.",
       trip: "Maldives Honeymoon Package"
     },
     {

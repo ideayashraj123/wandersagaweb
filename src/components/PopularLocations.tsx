@@ -189,7 +189,24 @@ const PopularLocations = () => {
                   key={location.id}
                   className="w-full max-w-xs mx-auto sm:w-1/2 md:w-1/3 lg:w-1/5 px-3 flex-shrink-0"
                 >
-                  <Card onClick={() => navigate(`/tour/${location.name.toLowerCase().includes('spiti') ? 'spiti-valley' : location.name.toLowerCase().includes('himachal') ? 'himachal-pradesh' : location.name.toLowerCase()}`)} className="group relative overflow-hidden bg-white/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2 cursor-pointer h-80">
+                  <Card onClick={() => {
+                    if (location.name === "Spiti Valley") {
+                      const featuredSection = document.getElementById('featured-destinations');
+                      if (featuredSection) {
+                        featuredSection.scrollIntoView({ 
+                          behavior: 'smooth', 
+                          block: 'start',
+                          inline: 'nearest'
+                        });
+                      }
+                    } else if (location.name === "Uttarakhand") {
+                      navigate("/uttarakhand-tours");
+                    } else if (location.name === "Himachal Pradesh") {
+                      navigate("/himachal-tours");
+                    } else {
+                      navigate(`/tour/${location.name.toLowerCase().includes('himachal') ? 'himachal-pradesh' : location.name.toLowerCase()}`);
+                    }
+                  }} className="group relative overflow-hidden bg-white/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2 cursor-pointer h-80">
                     <div className="relative h-full overflow-hidden rounded-xl">
                       <img 
                         src={location.image} 
@@ -220,7 +237,22 @@ const PopularLocations = () => {
                           className="text-white border-white/30 bg-white/10 hover:bg-white hover:text-black transition-all duration-300"
                           onClick={(e) => {
                             e.stopPropagation();
-                            navigate(`/tour/${location.name.toLowerCase().includes('spiti') ? 'spiti-valley' : location.name.toLowerCase().includes('himachal') ? 'himachal-pradesh' : location.name.toLowerCase()}`);
+                            if (location.name === "Spiti Valley") {
+                              const featuredSection = document.getElementById('featured-destinations');
+                              if (featuredSection) {
+                                featuredSection.scrollIntoView({ 
+                                  behavior: 'smooth', 
+                                  block: 'start',
+                                  inline: 'nearest'
+                                });
+                              }
+                            } else if (location.name === "Uttarakhand") {
+                              navigate("/uttarakhand-tours");
+                            } else if (location.name === "Himachal Pradesh") {
+                              navigate("/himachal-tours");
+                            } else {
+                              navigate(`/tour/${location.name.toLowerCase().includes('himachal') ? 'himachal-pradesh' : location.name.toLowerCase()}`);
+                            }
                           }}
                         >
                           {location.subtitle}
