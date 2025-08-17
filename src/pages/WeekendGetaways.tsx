@@ -24,7 +24,6 @@ const WeekendGetaways = () => {
       location: "Himachal Pradesh, India",
       image: himachalImage,
       rating: 4.6,
-      reviews: 89,
       duration: "4 Days",
       groupSize: "2-6 People",
       price: "₹18,999",
@@ -41,7 +40,6 @@ const WeekendGetaways = () => {
       location: "Dehradun, Uttarakhand",
       image: uttarakhandImage,
       rating: 4.6,
-      reviews: 156,
       duration: "3 Days",
       groupSize: "2-10 People",
       price: "₹7,999",
@@ -58,7 +56,6 @@ const WeekendGetaways = () => {
       location: "Uttarakhand, India",
       image: kashmirImage,
       rating: 4.8,
-      reviews: 245,
       duration: "5 Days",
       groupSize: "6-15 People",
       price: "₹15,999",
@@ -75,7 +72,6 @@ const WeekendGetaways = () => {
       location: "Garhwal, Uttarakhand",
       image: uttarakhandImage,
       rating: 4.9,
-      reviews: 189,
       duration: "4 Days",
       groupSize: "6-15 People",
       price: "₹8,999",
@@ -92,7 +88,6 @@ const WeekendGetaways = () => {
       location: "Garhwal Himalayas, Uttarakhand",
       image: uttarakhandImage,
       rating: 4.7,
-      reviews: 134,
       duration: "2 Days",
       groupSize: "4-12 People",
       price: "₹5,999",
@@ -109,7 +104,6 @@ const WeekendGetaways = () => {
       location: "Kinnaur, Himachal Pradesh",
       image: himachalImage,
       rating: 4.8,
-      reviews: 156,
       duration: "4 Days",
       groupSize: "4-12 People",
       price: "₹16,999",
@@ -126,7 +120,6 @@ const WeekendGetaways = () => {
       location: "Himachal Pradesh, India",
       image: himachalImage,
       rating: 4.8,
-      reviews: 201,
       duration: "3 Days",
       groupSize: "2-8 People",
       price: "₹14,999",
@@ -143,7 +136,6 @@ const WeekendGetaways = () => {
       location: "Dharamshala, Himachal Pradesh",
       image: himachalImage,
       rating: 4.9,
-      reviews: 167,
       duration: "6 Days",
       groupSize: "2-10 People",
       price: "₹15,999",
@@ -160,7 +152,6 @@ const WeekendGetaways = () => {
       location: "Parvati Valley, Himachal Pradesh",
       image: himachalImage,
       rating: 4.7,
-      reviews: 189,
       duration: "3 Days",
       groupSize: "4-12 People",
       price: "₹8,999",
@@ -177,7 +168,6 @@ const WeekendGetaways = () => {
       location: "Himachal Pradesh, India",
       image: himachalImage,
       rating: 4.8,
-      reviews: 142,
       duration: "3 Days",
       groupSize: "2-8 People",
       price: "₹12,999",
@@ -332,7 +322,6 @@ const WeekendGetaways = () => {
                       <div className="flex items-center space-x-1">
                         <Star className="h-4 w-4 text-yellow-400 fill-current" />
                         <span className="font-medium">{tour.rating}</span>
-                        <span className="text-muted-foreground text-sm">({tour.reviews} reviews)</span>
                       </div>
                     </div>
                     

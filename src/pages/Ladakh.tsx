@@ -22,7 +22,6 @@ const Ladakh = () => {
       location: "Leh, Ladakh",
       image: ladakhImage,
       rating: 4.9,
-      reviews: 287,
       duration: "8 Days",
       groupSize: "4-12 People",
       price: "₹28,999",
@@ -37,7 +36,6 @@ const Ladakh = () => {
       location: "Pangong, Ladakh",
       image: ladakhImage,
       rating: 4.8,
-      reviews: 198,
       duration: "6 Days",
       groupSize: "2-8 People",
       price: "₹24,999",
@@ -52,7 +50,6 @@ const Ladakh = () => {
       location: "Manali to Leh",
       image: ladakhImage,
       rating: 4.7,
-      reviews: 156,
       duration: "10 Days",
       groupSize: "4-10 People",
       price: "₹35,999",
@@ -152,7 +149,6 @@ const Ladakh = () => {
                       <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
                       <span className="font-medium">{tour.rating}</span>
                     </div>
-                    <span className="text-sm text-gray-500">({tour.reviews} reviews)</span>
                   </div>
                 </div>
 

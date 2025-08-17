@@ -109,7 +109,7 @@ const Navbar = () => {
       dropdownItems: weekendGetawayTours
     },
     { name: "About Us", href: "/about-us" },
-    { name: "Contact", href: "#contact" },
+    { name: "Contact", href: "/contact" },
   ];
 
   const handleNavClick = (item: NavItem) => {

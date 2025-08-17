@@ -36,7 +36,6 @@ const uttarakhandTours = [
     price: 8999,
     originalPrice: 12999,
     rating: 4.9,
-    reviews: 245,
     bestTime: "Apr-Jun, Sep-Nov",
     difficulty: "Moderate",
     highlights: [
@@ -64,7 +63,6 @@ const uttarakhandTours = [
     price: 4999,
     originalPrice: 6999,
     rating: 4.7,
-    reviews: 189,
     bestTime: "Mar-Jun, Sep-Dec",
     difficulty: "Easy-Moderate",
     highlights: [
@@ -92,7 +90,6 @@ const uttarakhandTours = [
     price: 7999,
     originalPrice: 10999,
     rating: 4.6,
-    reviews: 156,
     bestTime: "Mar-Jun, Sep-Nov",
     difficulty: "Easy",
     highlights: [
@@ -252,7 +249,6 @@ const UttarakhandTours = () => {
                     <div className="flex items-center space-x-1 text-yellow-500">
                       <Star className="h-4 w-4 fill-yellow-500" />
                       <span className="text-sm font-semibold text-gray-900">{tour.rating}</span>
-                      <span className="text-xs text-gray-500">({tour.reviews})</span>
                     </div>
                   </div>
 

@@ -22,7 +22,6 @@ const Uttarakhand = () => {
       location: "Garhwal, Uttarakhand",
       image: uttarakhandImage,
       rating: 4.9,
-      reviews: 189,
       duration: "4 Days",
       groupSize: "6-15 People",
       price: "₹8,999",
@@ -38,7 +37,6 @@ const Uttarakhand = () => {
       location: "Garhwal Himalayas, Uttarakhand",
       image: uttarakhandImage,
       rating: 4.7,
-      reviews: 134,
       duration: "2 Days",
       groupSize: "4-12 People",
       price: "₹5,999",
@@ -54,7 +52,6 @@ const Uttarakhand = () => {
       location: "Dehradun, Uttarakhand",
       image: uttarakhandImage,
       rating: 4.6,
-      reviews: 156,
       duration: "3 Days",
       groupSize: "2-10 People",
       price: "₹7,999",
@@ -182,7 +179,6 @@ const Uttarakhand = () => {
                       <div className="flex items-center space-x-1">
                         <Star className="h-4 w-4 text-yellow-400 fill-current" />
                         <span className="font-medium">{tour.rating}</span>
-                        <span className="text-muted-foreground text-sm">({tour.reviews} reviews)</span>
                       </div>
                     </div>
                     

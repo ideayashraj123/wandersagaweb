@@ -30,7 +30,6 @@ const himachalTours = [
     originalPrice: 16999,
     duration: "5 Days 4 Nights",
     rating: 4.8,
-    reviews: 142,
     image: "/src/assets/Himachal.webp",
     description: "Discover the serene beauty of Tirthan Valley and charming Jibhi village, perfect for nature lovers and peace seekers.",
     highlights: [
@@ -55,7 +54,6 @@ const himachalTours = [
     originalPrice: 11999,
     duration: "4 Days 3 Nights",
     rating: 4.7,
-    reviews: 198,
     image: "/src/assets/Himachal.webp",
     description: "Experience the magical Parvati Valley with Kasol's café culture and the mystical Kheerganga hot springs trek.",
     highlights: [
@@ -80,7 +78,6 @@ const himachalTours = [
     originalPrice: 15999,
     duration: "6 Days 5 Nights",
     rating: 4.9,
-    reviews: 167,
     image: "/src/assets/Himachal.webp",
     description: "Explore the spiritual heart of Himachal with Dalai Lama's residence, Triund trek, and paragliding in Bir.",
     highlights: [
@@ -105,7 +102,6 @@ const himachalTours = [
     originalPrice: 23999,
     duration: "8 Days 7 Nights",
     rating: 4.6,
-    reviews: 89,
     image: "/src/assets/Spitivalley.webp",
     description: "Challenge yourself with this high-altitude trek to Yunam Kanda peak, offering spectacular views of the Himalayas.",
     highlights: [
@@ -130,7 +126,6 @@ const himachalTours = [
     originalPrice: 19999,
     duration: "7 Days 6 Nights",
     rating: 4.8,
-    reviews: 201,
     image: "/src/assets/Himachal.webp",
     description: "A comprehensive Himachal tour covering adventure capital Manali, scenic Sissu, and bohemian Kasol.",
     highlights: [
@@ -155,7 +150,6 @@ const himachalTours = [
     originalPrice: 21999,
     duration: "8 Days 7 Nights",
     rating: 4.7,
-    reviews: 134,
     image: "/src/assets/Himachal.webp",
     description: "Journey through the Queen of Hills to the last village of India, experiencing diverse landscapes and cultures.",
     highlights: [
@@ -319,12 +313,8 @@ const HimachalTours: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Reviews */}
-                  <div className="flex items-center justify-between text-sm text-gray-500">
-                    <div className="flex items-center space-x-1">
-                      <Users className="h-4 w-4" />
-                      <span>{tour.reviews} reviews</span>
-                    </div>
+                  {/* Book Now */}
+                  <div className="flex items-center justify-end text-sm">
                     <span className="text-emerald-600 font-medium">Book Now</span>
                   </div>
                 </div>

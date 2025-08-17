@@ -19,6 +19,7 @@ import TermsAndConditions from "./pages/TermsAndConditions";
 import Rajasthan from "./pages/Rajasthan";
 import Kashmir from "./pages/Kashmir";
 import Ladakh from "./pages/Ladakh";
+import Contact from "./pages/Contact";
 
 // Optimize QueryClient for better performance
 const queryClient = new QueryClient({
@@ -49,6 +50,7 @@ const App = () => (
           <Route path="/ladakh" element={<Ladakh />} />
           <Route path="/weekend-getaways" element={<WeekendGetaways />} />
           <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/disclaimer" element={<Disclaimer />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-and-conditions" element={<TermsAndConditions />} />

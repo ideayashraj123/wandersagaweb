@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { X, Gift, Percent, ArrowRight, Sparkles, MapPin, Plane } from "lucide-react";
+import { toast } from "@/components/ui/use-toast";
+import { X, Gift, Percent, ArrowRight, Sparkles, MapPin, Plane, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { sendBookingEmail, sendEmailFallback, BookingFormData } from "@/lib/emailService";
 
 interface PromotionalPopupProps {
   isOpen?: boolean;
@@ -12,7 +14,7 @@ interface PromotionalPopupProps {
 
 const PromotionalPopup = ({ isOpen: externalIsOpen, onOpenChange }: PromotionalPopupProps = {}) => {
   const [internalIsOpen, setInternalIsOpen] = useState(false);
-  const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Use external control if provided, otherwise use internal state
   const isOpen = externalIsOpen !== undefined ? externalIsOpen : internalIsOpen;
@@ -29,11 +31,52 @@ const PromotionalPopup = ({ isOpen: externalIsOpen, onOpenChange }: PromotionalP
     }
   }, [externalIsOpen]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Handle form submission
-    console.log("Email submitted:", email);
-    setIsOpen(false);
+    setIsSubmitting(true);
+
+    const formData = new FormData(e.currentTarget);
+    const bookingData: BookingFormData = {
+      name: formData.get('name') as string,
+      phone: formData.get('phone') as string,
+      email: formData.get('email') as string,
+      travelers: 2, // Default for promotional popup
+      tentativeDates: 'To be discussed',
+      tourName: `Promotional Inquiry - ${formData.get('destination') as string || 'General'}`,
+      tourPrice: 'Special Offer - 25% OFF',
+    };
+
+    try {
+      // Try to send email using EmailJS
+      const emailSent = await sendBookingEmail(bookingData);
+      
+      if (emailSent) {
+        toast({ 
+          title: "Thank you for your interest!", 
+          description: "Our travel expert will contact you shortly with exclusive deals." 
+        });
+      } else {
+        // Fallback to mailto if EmailJS fails
+        sendEmailFallback(bookingData);
+        toast({ 
+          title: "Inquiry initiated", 
+          description: "Your email client has been opened. Please send the email to complete your inquiry." 
+        });
+      }
+      
+      setIsOpen(false);
+    } catch (error) {
+      console.error('Error sending promotional inquiry:', error);
+      // Use fallback method
+      sendEmailFallback(bookingData);
+      toast({ 
+        title: "Inquiry initiated", 
+        description: "Your email client has been opened. Please send the email to complete your inquiry." 
+      });
+      setIsOpen(false);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleClose = () => {
@@ -140,39 +183,51 @@ const PromotionalPopup = ({ isOpen: externalIsOpen, onOpenChange }: PromotionalP
                   <div className="grid gap-1.5 sm:gap-3 md:grid-cols-2">
                     <Input
                       type="text"
+                      name="name"
                       placeholder="Full Name"
-                      className="h-6 sm:h-10 text-xs sm:text-sm border-2 border-gray-200 rounded-lg focus:border-primary"
+                      className="h-9 sm:h-10 text-xs sm:text-sm border-2 border-gray-200 rounded-lg focus:border-primary"
                       required
                     />
                     <Input
                       type="email"
+                      name="email"
                       placeholder="Email Address"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className="h-6 sm:h-10 text-xs sm:text-sm border-2 border-gray-200 rounded-lg focus:border-primary"
+                      className="h-9 sm:h-10 text-xs sm:text-sm border-2 border-gray-200 rounded-lg focus:border-primary"
                       required
                     />
                   </div>
                   
                   <Input
                     type="tel"
+                    name="phone"
                     placeholder="Phone Number"
-                    className="h-6 sm:h-10 text-xs sm:text-sm border-2 border-gray-200 rounded-lg focus:border-primary"
+                    className="h-9 sm:h-10 text-xs sm:text-sm border-2 border-gray-200 rounded-lg focus:border-primary"
                     required
                   />
                   
                   <Input
                     type="text"
+                    name="destination"
                     placeholder="Preferred Destination"
-                    className="h-6 sm:h-10 text-xs sm:text-sm border-2 border-gray-200 rounded-lg focus:border-primary"
+                    className="h-9 sm:h-10 text-xs sm:text-sm border-2 border-gray-200 rounded-lg focus:border-primary"
                   />
 
                   <Button 
                     type="submit"
-                    className="w-full h-7 sm:h-12 text-xs sm:text-sm font-bold bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300"
+                    disabled={isSubmitting}
+                    className="w-full h-9 sm:h-12 text-xs sm:text-sm font-bold bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                   >
-                    Submit
-                    <ArrowRight className="ml-2 h-3 w-3 sm:h-4 sm:w-4" />
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="h-3 w-3 sm:h-4 sm:w-4 mr-2 animate-spin" />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        Submit
+                        <ArrowRight className="ml-2 h-3 w-3 sm:h-4 sm:w-4" />
+                      </>
+                    )}
                   </Button>
                 </form>
 

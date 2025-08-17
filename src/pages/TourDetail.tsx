@@ -12,6 +12,7 @@ import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { toast } from "@/components/ui/use-toast";
 import { getTourBySlug, tours, Tour } from "@/data/tours";
+import { sendBookingEmail, sendEmailFallback, BookingFormData } from "@/lib/emailService";
 import {
   MapPin,
   Calendar,
@@ -23,6 +24,7 @@ import {
   Phone,
   Users,
   ChevronRight,
+  Loader2,
 } from "lucide-react";
 
 const formatCurrency = (amount: number) =>
@@ -40,11 +42,60 @@ const TourDetail = () => {
   const navigate = useNavigate();
   const tour: Tour | undefined = useMemo(() => (slug ? getTourBySlug(slug) : undefined), [slug]);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Scroll to top when component mounts or slug changes
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [slug]);
+
+  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const formData = new FormData(e.currentTarget);
+    const bookingData: BookingFormData = {
+      name: formData.get('name') as string,
+      phone: formData.get('phone') as string,
+      email: formData.get('email') as string,
+      travelers: parseInt(formData.get('travelers') as string),
+      tentativeDates: formData.get('dates') as string,
+      tourName: tour?.name,
+      tourPrice: tour ? formatCurrency(tour.price) : undefined,
+    };
+
+    try {
+      // Try to send email using EmailJS
+      const emailSent = await sendBookingEmail(bookingData);
+      
+      if (emailSent) {
+        toast({ 
+          title: "Enquiry sent successfully!", 
+          description: "Our travel expert will contact you shortly via email and phone." 
+        });
+      } else {
+        // Fallback to mailto if EmailJS fails
+        sendEmailFallback(bookingData);
+        toast({ 
+          title: "Enquiry initiated", 
+          description: "Your email client has been opened. Please send the email to complete your enquiry." 
+        });
+      }
+      
+      setIsDialogOpen(false);
+    } catch (error) {
+      console.error('Error sending enquiry:', error);
+      // Use fallback method
+      sendEmailFallback(bookingData);
+      toast({ 
+        title: "Enquiry initiated", 
+        description: "Your email client has been opened. Please send the email to complete your enquiry." 
+      });
+      setIsDialogOpen(false);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   if (!tour) {
     return (
@@ -84,7 +135,6 @@ const TourDetail = () => {
                 <div className="inline-flex items-center gap-1 text-yellow-300/90">
                   <Star className="h-4 w-4 fill-yellow-300 text-yellow-300" />
                   <span className="font-semibold">{tour.rating}</span>
-                  <span className="text-white/80">({tour.reviewsCount})</span>
                 </div>
               </div>
               <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 drop-shadow-lg">{tour.name}</h1>
@@ -260,35 +310,40 @@ const TourDetail = () => {
                     </DialogHeader>
                     <form
                       className="space-y-4"
-                      onSubmit={(e) => {
-                        e.preventDefault();
-                        setIsDialogOpen(false);
-                        toast({ title: "Enquiry sent", description: "Our travel expert will contact you shortly." });
-                      }}
+                      onSubmit={handleFormSubmit}
                     >
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                           <Label htmlFor="name">Full Name</Label>
-                          <Input id="name" placeholder="John Doe" required />
+                          <Input id="name" name="name" placeholder="John Doe" className="h-11 md:h-10" required />
                         </div>
                         <div>
                           <Label htmlFor="phone">Phone</Label>
-                          <Input id="phone" type="tel" placeholder="98765 43210" required />
+                          <Input id="phone" name="phone" type="tel" placeholder="98765 43210" className="h-11 md:h-10" required />
                         </div>
                         <div>
                           <Label htmlFor="email">Email</Label>
-                          <Input id="email" type="email" placeholder="you@example.com" required />
+                          <Input id="email" name="email" type="email" placeholder="you@example.com" className="h-11 md:h-10" required />
                         </div>
                         <div>
                           <Label htmlFor="travelers">Travelers</Label>
-                          <Input id="travelers" type="number" min={1} defaultValue={2} required />
+                          <Input id="travelers" name="travelers" type="number" min={1} defaultValue={2} className="h-11 md:h-10" required />
                         </div>
                         <div className="md:col-span-2">
                           <Label htmlFor="dates">Tentative Dates</Label>
-                          <Input id="dates" placeholder="20 Oct - 26 Oct" />
+                          <Input id="dates" name="dates" placeholder="20 Oct - 26 Oct" className="h-11 md:h-10" />
                         </div>
                       </div>
-                      <Button type="submit" className="w-full">Submit</Button>
+                      <Button type="submit" className="w-full" disabled={isSubmitting}>
+                        {isSubmitting ? (
+                          <>
+                            <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                            Sending...
+                          </>
+                        ) : (
+                          'Submit'
+                        )}
+                      </Button>
                     </form>
                   </DialogContent>
                 </Dialog>

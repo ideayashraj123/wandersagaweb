@@ -62,7 +62,7 @@ const AboutUs = () => {
           <img 
             src={founderImage} 
             alt="YashRaj Singh - Founder of WanderSaga" 
-            className="w-full h-full object-cover object-center"
+            className="w-full h-full object-cover object-[75%_center] md:object-center"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30"></div>
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
@@ -171,7 +171,7 @@ const AboutUs = () => {
             <motion.div variants={fadeInUp} className="relative">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 <img 
-                  src={heroBeachImage} 
+                  src="https://images.unsplash.com/photo-1682685796467-89a6f149f07a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
                   alt="Wandersaga Travel Experience" 
                   className="w-full h-96 object-cover"
                 />
@@ -231,7 +231,7 @@ const AboutUs = () => {
                     <img 
                       src={founderImage} 
                       alt="YashRaj Singh - Founder" 
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover object-[75%_center] md:object-center"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                   </div>

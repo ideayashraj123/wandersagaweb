@@ -22,7 +22,6 @@ const Rajasthan = () => {
       location: "Rajasthan, India",
       image: rajasthanImage,
       rating: 4.9,
-      reviews: 256,
       duration: "7 Days",
       groupSize: "4-12 People",
       price: "₹24,999",
@@ -37,7 +36,6 @@ const Rajasthan = () => {
       location: "Jaisalmer, Rajasthan",
       image: rajasthanImage,
       rating: 4.8,
-      reviews: 189,
       duration: "4 Days",
       groupSize: "2-8 People",
       price: "₹15,999",
@@ -52,7 +50,6 @@ const Rajasthan = () => {
       location: "Udaipur, Rajasthan",
       image: rajasthanImage,
       rating: 4.7,
-      reviews: 198,
       duration: "5 Days",
       groupSize: "2-10 People",
       price: "₹18,999",
@@ -152,7 +149,6 @@ const Rajasthan = () => {
                       <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
                       <span className="font-medium">{tour.rating}</span>
                     </div>
-                    <span className="text-sm text-gray-500">({tour.reviews} reviews)</span>
                   </div>
                 </div>
 

@@ -22,7 +22,6 @@ const Himachal = () => {
       location: "Himachal Pradesh, India",
       image: himachalImage,
       rating: 4.8,
-      reviews: 142,
       duration: "3 Days",
       groupSize: "2-8 People",
       price: "₹12,999",
@@ -38,7 +37,6 @@ const Himachal = () => {
       location: "Parvati Valley, Himachal Pradesh",
       image: himachalImage,
       rating: 4.7,
-      reviews: 189,
       duration: "3 Days",
       groupSize: "4-12 People",
       price: "₹8,999",
@@ -54,7 +52,6 @@ const Himachal = () => {
       location: "Dharamshala, Himachal Pradesh",
       image: himachalImage,
       rating: 4.9,
-      reviews: 167,
       duration: "6 Days",
       groupSize: "2-10 People",
       price: "₹15,999",
@@ -70,7 +67,6 @@ const Himachal = () => {
       location: "Kinnaur, Himachal Pradesh",
       image: himachalImage,
       rating: 4.8,
-      reviews: 156,
       duration: "4 Days",
       groupSize: "4-12 People",
       price: "₹16,999",
@@ -86,7 +82,6 @@ const Himachal = () => {
       location: "Himachal Pradesh, India",
       image: himachalImage,
       rating: 4.8,
-      reviews: 201,
       duration: "3 Days",
       groupSize: "2-8 People",
       price: "₹14,999",
@@ -102,7 +97,6 @@ const Himachal = () => {
       location: "Himachal Pradesh, India",
       image: himachalImage,
       rating: 4.6,
-      reviews: 89,
       duration: "4 Days",
       groupSize: "2-6 People",
       price: "₹18,999",
@@ -230,7 +224,6 @@ const Himachal = () => {
                       <div className="flex items-center space-x-1">
                         <Star className="h-4 w-4 text-yellow-400 fill-current" />
                         <span className="font-medium">{tour.rating}</span>
-                        <span className="text-muted-foreground text-sm">({tour.reviews} reviews)</span>
                       </div>
                     </div>
                     

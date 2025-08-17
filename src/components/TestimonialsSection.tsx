@@ -23,7 +23,7 @@ const TestimonialsSection = () => {
       location: "Delhi, India",
       image: happyTravelers,
       rating: 5,
-      text: "The Ladakh adventure tour was the trip of a lifetime! Professional guides, well-planned itinerary, and breathtaking experiences. TravelLux handled everything seamlessly, allowing us to focus on enjoying the journey.",
+      text: "The Ladakh adventure tour was the trip of a lifetime! Professional guides, well-planned itinerary, and breathtaking experiences. WanderSaga handled everything seamlessly, allowing us to focus on enjoying the journey.",
       trip: "Ladakh Adventure Tour"
     },
     {

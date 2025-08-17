@@ -30,7 +30,6 @@ export type Tour = {
   price: number;
   oldPrice?: number;
   rating: number;
-  reviewsCount: number;
   bestTime: string;
   startingPoint: string;
   highlights: string[];
@@ -54,7 +53,6 @@ export const tours: Tour[] = [
     price: 24999,
     oldPrice: 29999,
     rating: 4.8,
-    reviewsCount: 137,
     bestTime: "May to September",
     startingPoint: "Manali",
     highlights: [
@@ -148,7 +146,6 @@ export const tours: Tour[] = [
     price: 32999,
     oldPrice: 37999,
     rating: 4.9,
-    reviewsCount: 221,
     bestTime: "June to September",
     startingPoint: "Leh",
     highlights: [
@@ -187,7 +184,6 @@ export const tours: Tour[] = [
     durationNights: 4,
     price: 21999,
     rating: 4.7,
-    reviewsCount: 89,
     bestTime: "October to April",
     startingPoint: "Guwahati",
     highlights: ["Double-decker root bridge", "Dawki boat ride", "Mawsmai Caves"],
@@ -217,7 +213,6 @@ export const tours: Tour[] = [
     price: 27999,
     oldPrice: 31999,
     rating: 4.8,
-    reviewsCount: 164,
     bestTime: "March to October",
     startingPoint: "Srinagar",
     highlights: ["Dal Lake shikara", "Gulmarg gondola", "Betaab Valley"],
@@ -247,7 +242,6 @@ export const tours: Tour[] = [
     durationNights: 5,
     price: 23999,
     rating: 4.6,
-    reviewsCount: 74,
     bestTime: "All year (avoid peak monsoon)",
     startingPoint: "Dehradun",
     highlights: ["Rishikesh Ganga Aarti", "Auli views", "Jim Corbett safari"],
@@ -277,7 +271,6 @@ export const tours: Tour[] = [
     durationNights: 4,
     price: 19999,
     rating: 4.5,
-    reviewsCount: 58,
     bestTime: "March to June, Sept to Dec",
     startingPoint: "Chandigarh",
     highlights: ["Mall Road heritage walk", "Kufri views", "Old Manali cafes"],
@@ -306,7 +299,6 @@ export const tours: Tour[] = [
     durationNights: 6,
     price: 30999,
     rating: 4.7,
-    reviewsCount: 142,
     bestTime: "October to March",
     startingPoint: "Jaipur",
     highlights: ["Amber Fort", "Blue City walk", "Sam sand dunes"],
@@ -338,7 +330,6 @@ export const tours: Tour[] = [
     price: 8999,
     oldPrice: 12999,
     rating: 4.9,
-    reviewsCount: 245,
     bestTime: "April to June, September to November",
     startingPoint: "Delhi/Haridwar",
     highlights: [
@@ -411,7 +402,6 @@ export const tours: Tour[] = [
     price: 4999,
     oldPrice: 6999,
     rating: 4.7,
-    reviewsCount: 189,
     bestTime: "March to June, September to December",
     startingPoint: "Delhi",
     highlights: [
@@ -476,7 +466,6 @@ export const tours: Tour[] = [
     price: 7999,
     oldPrice: 10999,
     rating: 4.6,
-    reviewsCount: 156,
     bestTime: "March to June, September to November",
     startingPoint: "Delhi (Akshardham Metro Station)",
     highlights: [
@@ -546,7 +535,6 @@ export const tours: Tour[] = [
     price: 12999,
     oldPrice: 16999,
     rating: 4.8,
-    reviewsCount: 142,
     bestTime: "March to June, September to November",
     startingPoint: "Delhi/Chandigarh",
     highlights: [
@@ -621,7 +609,6 @@ export const tours: Tour[] = [
     price: 8999,
     oldPrice: 11999,
     rating: 4.7,
-    reviewsCount: 198,
     bestTime: "March to June, September to November",
     startingPoint: "Delhi",
     highlights: [
@@ -692,7 +679,6 @@ export const tours: Tour[] = [
     price: 11999,
     oldPrice: 15999,
     rating: 4.9,
-    reviewsCount: 167,
     bestTime: "March to June, September to November",
     startingPoint: "Delhi",
     highlights: [
@@ -741,7 +727,6 @@ export const tours: Tour[] = [
     price: 18999,
     oldPrice: 23999,
     rating: 4.6,
-    reviewsCount: 89,
     bestTime: "June to September",
     startingPoint: "Delhi/Chandigarh",
     highlights: [
@@ -817,7 +802,6 @@ export const tours: Tour[] = [
     price: 14999,
     oldPrice: 19999,
     rating: 4.8,
-    reviewsCount: 201,
     bestTime: "March to June, September to November",
     startingPoint: "Delhi",
     highlights: [
@@ -892,7 +876,6 @@ export const tours: Tour[] = [
     price: 16999,
     oldPrice: 21999,
     rating: 4.7,
-    reviewsCount: 134,
     bestTime: "March to June, September to November",
     startingPoint: "Delhi",
     highlights: [
@@ -974,7 +957,6 @@ export const tours: Tour[] = [
     price: 19999,
     oldPrice: 25999,
     rating: 4.8,
-    reviewsCount: 156,
     bestTime: "December to March",
     startingPoint: "Delhi",
     highlights: [
@@ -1078,7 +1060,6 @@ export const tours: Tour[] = [
     price: 19499,
     oldPrice: 24999,
     rating: 4.9,
-    reviewsCount: 156,
     bestTime: "May to September",
     startingPoint: "Delhi",
     highlights: [
@@ -1185,7 +1166,6 @@ export const tours: Tour[] = [
     price: 29999,
     oldPrice: 35999,
     rating: 4.8,
-    reviewsCount: 89,
     bestTime: "May to September",
     startingPoint: "Delhi",
     highlights: [
@@ -1298,7 +1278,6 @@ export const tours: Tour[] = [
     price: 13999,
     oldPrice: 18999,
     rating: 4.9,
-    reviewsCount: 112,
     bestTime: "May to September",
     startingPoint: "Delhi",
     highlights: [

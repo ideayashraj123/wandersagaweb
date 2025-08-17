@@ -25,7 +25,6 @@ const SpitiValley = () => {
       location: "Spiti Valley, India",
       image: mountainAdventure,
       rating: 4.9,
-      reviews: 156,
       duration: "6N/7D",
       groupSize: "4-12 People",
       price: "₹19,499",
@@ -41,7 +40,6 @@ const SpitiValley = () => {
       location: "Spiti Valley, India",
       image: heroBeach,
       rating: 4.9,
-      reviews: 234,
       duration: "5-7 Days",
       groupSize: "2-8 People",
       price: "₹19,999",
@@ -57,7 +55,6 @@ const SpitiValley = () => {
       location: "Spiti Valley, India",
       image: culturalHeritage,
       rating: 4.7,
-      reviews: 156,
       duration: "6-8 Days",
       groupSize: "2-6 People",
       price: "₹29,999",
@@ -73,7 +70,6 @@ const SpitiValley = () => {
       location: "Spiti Valley, India",
       image: spitiValley,
       rating: 4.9,
-      reviews: 112,
       duration: "5 Days",
       groupSize: "4-10 People",
       price: "₹13,999",
@@ -201,7 +197,6 @@ const SpitiValley = () => {
                       <div className="flex items-center space-x-1">
                         <Star className="h-4 w-4 text-yellow-400 fill-current" />
                         <span className="font-medium">{tour.rating}</span>
-                        <span className="text-muted-foreground text-sm">({tour.reviews} reviews)</span>
                       </div>
                     </div>
                     
