@@ -2,13 +2,19 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Menu, X, MapPin, Phone, User, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [isLocationModalOpen, setIsLocationModalOpen] = useState(false);
   const navigate = useNavigate();
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const handleLogoClick = () => {
+    setIsLocationModalOpen(true);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -177,7 +183,7 @@ const Navbar = () => {
             {/* Logo */}
             <div 
               className="flex items-center space-x-3 group cursor-pointer"
-              onClick={() => navigate('/')}
+              onClick={handleLogoClick}
             >
               <div className={`p-2 rounded-xl transition-all duration-500 ${
                 isScrolled ? "bg-primary/10" : "bg-white/10 backdrop-blur-sm"
@@ -353,6 +359,61 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
+
+      {/* Location Modal */}
+      <Dialog open={isLocationModalOpen} onOpenChange={setIsLocationModalOpen}>
+        <DialogContent className="max-w-md mx-auto">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2">
+              <MapPin className="h-5 w-5 text-primary" />
+              Our Location
+            </DialogTitle>
+          </DialogHeader>
+          <div className="space-y-4">
+            <div className="text-sm text-muted-foreground">
+              <p className="font-medium mb-2">WanderSaga Office</p>
+              <p>6th floor, Roots Tower</p>
+              <p>Near V3S Mall, Swasthya Vihar</p>
+              <p>New Delhi, Delhi 110092</p>
+            </div>
+            
+            <div className="aspect-video w-full rounded-lg overflow-hidden border">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.4901763115567!2d77.28945731454795!3d28.616634382420454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce3e564b1a9e5%3A0x7d5d4b7b7b7b7b7b!2sRoots%20Tower%2C%20Swasthya%20Vihar%2C%20New%20Delhi%2C%20Delhi!5e0!3m2!1sen!2sin!4v1692785432123!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="WanderSaga Office Location"
+              ></iframe>
+            </div>
+            
+            <div className="flex gap-3">
+              <Button 
+                onClick={() => {
+                  const address = "WANDERSAGA, 6th floor, Roots Tower, near V3S MALL, Swasthya Vihar, New Delhi, Delhi, 110092";
+                  const encodedAddress = encodeURIComponent(address);
+                  const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
+                  window.open(googleMapsUrl, '_blank');
+                }}
+                className="flex-1 btn-hero"
+              >
+                <MapPin className="h-4 w-4 mr-2" />
+                Open in Maps
+              </Button>
+              <Button 
+                variant="outline" 
+                onClick={() => setIsLocationModalOpen(false)}
+                className="flex-1"
+              >
+                Close
+              </Button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </>
   );
 };
