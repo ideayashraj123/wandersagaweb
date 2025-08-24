@@ -148,7 +148,7 @@ const SpitiValley = () => {
                   <img 
                     src={tour.image} 
                     alt={tour.name}
-                    className="w-full h-64 object-cover object-[50%_70%] group-hover:scale-105 transition-transform duration-700"
+                    className="w-full h-64 object-cover object-[50%_80%] group-hover:scale-105 transition-transform duration-700"
                     loading="lazy"
                   />
                   
