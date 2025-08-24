@@ -3,6 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { MapPin, Star, ArrowRight, Mountain } from "lucide-react";
 import { motion } from "framer-motion";
+import spitiBannerImage from "@/assets/images/spitibanner.jpg";
 
 const PremiumTrip = () => {
   const navigate = useNavigate();
@@ -11,8 +12,8 @@ const PremiumTrip = () => {
     navigate("/spiti-valley");
   };
 
-  // Premium Unsplash image of mountain landscapes
-  const premiumImage = "https://images.unsplash.com/photo-1617159156637-dfb8655c9f95?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+  // Using local Spiti banner image
+  const premiumImage = spitiBannerImage;
 
   return (
     <section className="py-12 bg-gradient-to-br from-gray-50 to-white">
@@ -51,7 +52,7 @@ const PremiumTrip = () => {
               <img 
                 src={premiumImage}
                 alt="Spiti Valley Mountains"
-                className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                className="w-full h-full object-cover object-[50%_30%] transform group-hover:scale-102 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-black/20" />
             </div>

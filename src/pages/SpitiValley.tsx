@@ -3,10 +3,11 @@ import { useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Star, MapPin, Clock, Users } from "lucide-react";
-import mountainAdventure from "@/assets/mountain-adventure.jpg";
-import culturalHeritage from "@/assets/cultural-heritage.jpg";
-import heroBeach from "@/assets/hero-beach.jpg";
 import spitiValley from "@/assets/Spitivalley.jpg";
+import spitiBike from "@/assets/images/spitibike.jpg";
+import spitiShortCircuit from "@/assets/images/spitishortcircuit.jpg";
+import winterSpiti from "@/assets/images/winterspiti.jpg";
+import spitiLakeWithChandrataal from "@/assets/images/spitiliake with chandratal.jpg";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -23,7 +24,7 @@ const SpitiValley = () => {
       id: 1,
       name: "Full Circuit Summer Spiti Expedition",
       location: "Spiti Valley, India",
-      image: mountainAdventure,
+      image: spitiLakeWithChandrataal,
       rating: 4.9,
       duration: "6N/7D",
       groupSize: "4-12 People",
@@ -38,7 +39,7 @@ const SpitiValley = () => {
       id: 2,
       name: "Winter Spiti Expedition",
       location: "Spiti Valley, India",
-      image: heroBeach,
+      image: winterSpiti,
       rating: 4.9,
       duration: "5-7 Days",
       groupSize: "2-8 People",
@@ -53,7 +54,7 @@ const SpitiValley = () => {
       id: 3,
       name: "Spiti Valley Bike Expedition",
       location: "Spiti Valley, India",
-      image: culturalHeritage,
+      image: spitiBike,
       rating: 4.7,
       duration: "6-8 Days",
       groupSize: "2-6 People",
@@ -68,7 +69,7 @@ const SpitiValley = () => {
       id: 4,
       name: "Short Circuit Summer Spiti Expedition",
       location: "Spiti Valley, India",
-      image: spitiValley,
+      image: spitiShortCircuit,
       rating: 4.9,
       duration: "5 Days",
       groupSize: "4-10 People",
@@ -147,7 +148,7 @@ const SpitiValley = () => {
                   <img 
                     src={tour.image} 
                     alt={tour.name}
-                    className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700"
+                    className="w-full h-64 object-cover object-[50%_70%] group-hover:scale-105 transition-transform duration-700"
                     loading="lazy"
                   />
                   

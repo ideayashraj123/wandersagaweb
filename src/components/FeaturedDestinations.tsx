@@ -3,10 +3,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useState, useEffect, useRef, useCallback, useMemo, memo } from "react";
 import { useNavigate } from "react-router-dom";
-import mountainAdventure from "@/assets/mountain-adventure.jpg";
-import culturalHeritage from "@/assets/cultural-heritage.jpg";
-import heroBeach from "@/assets/hero-beach.jpg";
-import spitiValley from "@/assets/Spitivalley.jpg";
+import spitiBike from "@/assets/images/spitibike.jpg";
+import spitiShortCircuit from "@/assets/images/spitishortcircuit.jpg";
+import winterSpiti from "@/assets/images/winterspiti.jpg";
+import spitiLakeWithChandrataal from "@/assets/images/spitiliake with chandratal.jpg";
 
 const FeaturedDestinations = () => {
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ const FeaturedDestinations = () => {
       id: 1,
       name: "Winter Spiti Expedition",
       location: "Spiti Valley, India",
-      image: heroBeach,
+      image: winterSpiti,
       rating: 4.9,
       duration: "5-7 Days",
       groupSize: "2-8 People",
@@ -34,7 +34,7 @@ const FeaturedDestinations = () => {
       id: 2,
       name: "Summer Spiti Circuit with Chandrataal",
       location: "Spiti Valley, India",
-      image: mountainAdventure,
+      image: spitiLakeWithChandrataal,
       rating: 4.9,
       duration: "6N/7D",
       groupSize: "4-12 People",
@@ -48,7 +48,7 @@ const FeaturedDestinations = () => {
       id: 3,
       name: "Spiti Valley Bike Exp",
       location: "Spiti Valley, India",
-      image: culturalHeritage,
+      image: spitiBike,
       rating: 4.7,
       duration: "6-8 Days",
       groupSize: "2-6 People",
@@ -62,7 +62,7 @@ const FeaturedDestinations = () => {
       id: 4,
       name: "Short Circuit Summer Spiti Expedition",
       location: "Spiti Valley, India",
-      image: spitiValley,
+      image: spitiShortCircuit,
       rating: 4.9,
       duration: "5 Days",
       groupSize: "4-10 People",
@@ -204,7 +204,7 @@ const FeaturedDestinations = () => {
                       <img 
                         src={destination.image} 
                         alt={destination.name}
-                        className="w-full h-48 sm:h-56 md:h-64 object-cover group-hover:scale-110 transition-transform duration-700"
+                        className="w-full h-48 sm:h-56 md:h-64 object-cover object-[50%_80%] group-hover:scale-105 transition-transform duration-700"
                         loading="lazy"
                         decoding="async"
                         style={{

@@ -5,6 +5,19 @@ import kashmirImage from "@/assets/Kashmir.jpg";
 import uttarakhandImage from "@/assets/Uttarakhand.jpg";
 import himachalImage from "@/assets/Himachal.jpg";
 import rajasthanImage from "@/assets/Rajasthan.jpg";
+import spitiBike from "@/assets/images/spitibike.jpg";
+import spitiShortCircuit from "@/assets/images/spitishortcircuit.jpg";
+import winterSpiti from "@/assets/images/winterspiti.jpg";
+import spitiLakeWithChandrataal from "@/assets/images/spitiliake with chandratal.jpg";
+import choptatrekImage from "@/assets/images/choptatrek.jpg";
+import naagtibbaImage from "@/assets/images/naagtibba.jpg";
+import chakrataImage from "@/assets/images/chakrata (2).jpg";
+import jibhiImage from "@/assets/images/jibhi.jpg";
+import kasolImage from "@/assets/images/kasol.jpg";
+import mclordgangImage from "@/assets/images/mclordgang.jpg";
+import kalpaImage from "@/assets/images/kalpa.jpg";
+import manalisissuImage from "@/assets/images/manalisissu.jpg";
+import yullakundaImage from "@/assets/images/yullakunda.jpg";
 
 export type TourFAQ = {
   question: string;
@@ -323,8 +336,8 @@ export const tours: Tour[] = [
     tagline: "Mini Switzerland of Uttarakhand",
     description:
       "Chopta to Tungnath is a breathtaking trek in the Garhwal region of Uttarakhand, India. Chopta, often referred to as the 'Mini Switzerland of India,' serves as the base for this enchanting journey. The trek leads to Tungnath, the highest Shiva temple in the world at an elevation of about 12,073 feet. The trail winds through lush meadows, dense forests, and alpine landscapes, offering spectacular views of the snow-capped Himalayan peaks. Tungnath's ancient temple dedicated to Lord Shiva is a spiritual haven amid the mountains. The trek is a harmonious blend of natural beauty, spiritual exploration, and a sense of accomplishment as you reach the sacred Tungnath temple.",
-    heroImage: uttarakhandImage,
-    galleryImages: [uttarakhandImage, himachalImage, kashmirImage],
+    heroImage: choptatrekImage,
+    galleryImages: [choptatrekImage, himachalImage, kashmirImage],
     durationDays: 4,
     durationNights: 3,
     price: 8999,
@@ -395,8 +408,8 @@ export const tours: Tour[] = [
     tagline: "Serpent's Peak Adventure",
     description:
       "Nag Tibba, which means 'Serpent's Peak,' is a stunning and accessible trekking destination in the Garhwal Himalayas of Uttarakhand, India. Rising to an elevation of approximately 9,915 feet, it offers breathtaking, panoramic views of prominent snow-capped peaks like Bandarpoonch, Swargarohini, and Gangotri. The journey typically begins from Pantwari village, winding through enchanting oak and deodar forests that are a treat for nature lovers. As you ascend, the dense woods give way to sprawling green meadows. At the summit, a small temple dedicated to the Nag Devta (Snake God) stands, which is where the peak gets its name.",
-    heroImage: uttarakhandImage,
-    galleryImages: [uttarakhandImage, himachalImage, ladakhImage],
+    heroImage: naagtibbaImage,
+    galleryImages: [naagtibbaImage, himachalImage, ladakhImage],
     durationDays: 2,
     durationNights: 1,
     price: 4999,
@@ -459,8 +472,8 @@ export const tours: Tour[] = [
     tagline: "Hidden Hill Station Gem",
     description:
       "Chakrata, nestled in the Dehradun district of Uttarakhand, India, is a charming hill station surrounded by the picturesque Shivalik Range. Perched at an altitude of approximately 7,000 feet, Chakrata offers a serene escape with its tranquil ambiance and pristine landscapes. The town is known for its dense forests, lush greenery, and pleasant weather throughout the year. Tiger Falls, cascading from a height of 312 feet, is a natural marvel and a popular attraction. Chilmiri Neck, a vantage point, provides panoramic views of the surrounding hills. Chakrata is a haven for nature enthusiasts, offering opportunities for trekking, birdwatching, and exploring the untouched beauty of the Himalayan foothills. It's an ideal retreat for those seeking tranquility and natural splendor.",
-    heroImage: uttarakhandImage,
-    galleryImages: [uttarakhandImage, himachalImage, meghalayaImage],
+    heroImage: chakrataImage,
+    galleryImages: [chakrataImage, himachalImage, meghalayaImage],
     durationDays: 3,
     durationNights: 2,
     price: 7999,
@@ -528,8 +541,8 @@ export const tours: Tour[] = [
     name: "Tirthan Jibhi Valley",
     tagline: "Serene Valley Escape",
     description: "Nestled in the heart of Himachal Pradesh, the Jibhi-Jalori-Tirthan circuit offers a mesmerizing blend of natural beauty and tranquility. Begin in Jibhi, where the quaint village charm welcomes you. Venture to Jalori Pass, surrounded by majestic peaks, and discover the serene Jalori Lake and the ancient Mahakali Temple. Transition to Tirthan Valley, a haven for nature enthusiasts, where the pristine Tirthan River flows amidst lush landscapes. Engage in riverside activities and explore the Great Himalayan National Park, showcasing the region's rich biodiversity. Immerse yourself in this 3-in-1 escape, where every moment is a symphony of mountains, rivers, and timeless serenity.",
-    heroImage: himachalImage,
-    galleryImages: [himachalImage],
+    heroImage: jibhiImage,
+    galleryImages: [jibhiImage],
     durationDays: 3,
     durationNights: 2,
     price: 12999,
@@ -602,8 +615,8 @@ export const tours: Tour[] = [
     name: "Kasol Kheerganga Trek",
     tagline: "Parvati Valley Magic",
     description: "Kasol to Kheerganga offers a mystical journey through the lush Parvati Valley in Himachal Pradesh. Begin in Kasol, a charming village along the Parvati River known for its laid-back atmosphere and vibrant Israeli cafes. Traverse through pine forests and scenic landscapes as you embark on the trek to Kheerganga. Kheerganga, perched at an altitude of about 9,700 feet, captivates with its natural hot springs and panoramic mountain views. Relax in the soothing thermal waters, surrounded by snow-capped peaks. The trek provides not just a physical adventure but a spiritual one, with the mystical ambiance of Kheerganga creating an unforgettable experience in the lap of the Himalayas.",
-    heroImage: himachalImage,
-    galleryImages: [himachalImage],
+    heroImage: kasolImage,
+    galleryImages: [kasolImage],
     durationDays: 3,
     durationNights: 2,
     price: 8999,
@@ -672,8 +685,8 @@ export const tours: Tour[] = [
     name: "McLeodganj Triund Bir",
     tagline: "Spiritual & Adventure Hub",
     description: "Explore the spiritual heart of Himachal with Dalai Lama's residence, Triund trek, and paragliding in Bir.",
-    heroImage: himachalImage,
-    galleryImages: [himachalImage],
+    heroImage: mclordgangImage,
+    galleryImages: [mclordgangImage],
     durationDays: 6,
     durationNights: 5,
     price: 11999,
@@ -720,8 +733,8 @@ export const tours: Tour[] = [
     name: "Yulla Kanda Trek",
     tagline: "World's Highest Krishna Temple",
     description: "Yulla Kanda is a high-altitude destination in Himachal Pradesh, known for being home to the world's highest Krishna temple, situated at around 4,000 meters above sea level. It's a rare mix of spiritual significance and raw Himalayan beauty. The main attraction is the temple dedicated to Lord Krishna, located beside a glacial lake, surrounded by panoramic views of snow-covered peaks. The site remains untouched by mass tourism, making it ideal for travelers seeking solitude, spiritual depth, or an offbeat trekking experience. The trek to Yulla Kanda passes through remote villages, dense forests, and high-altitude meadows. With minimal infrastructure on the trail, it offers a rugged and authentic Himalayan experience. Expect limited connectivity, no commercial stays, and a challenging route—this is a destination for serious trekkers and spiritual explorers.",
-    heroImage: himachalImage,
-    galleryImages: [himachalImage],
+    heroImage: yullakundaImage,
+    galleryImages: [yullakundaImage],
     durationDays: 4,
     durationNights: 3,
     price: 18999,
@@ -795,8 +808,8 @@ export const tours: Tour[] = [
     name: "Manali Sissu Kasol",
     tagline: "Complete Himachal Experience",
     description: "Manali, Sissu, and Kasol are popular tourist destinations in the Indian state of Himachal Pradesh, each offering its own unique charm and attractions. Manali: Nestled in the Himalayas, Manali is renowned for its scenic beauty, adventure sports, and vibrant culture. Visitors can explore attractions such as Hadimba Temple, Solang Valley for adventure sports like skiing and paragliding, Rohtang Pass for breathtaking views, and Old Manali for its quaint streets and cafes. Sissu: Sissu is a small village located in Lahaul Valley, known for its stunning landscapes, lush greenery, and peaceful ambiance. It's an ideal destination for those seeking solitude amidst nature. The village offers opportunities for trekking, camping, and experiencing the local culture and traditions. Kasol: Situated along the banks of the Parvati River, Kasol is a haven for backpackers and nature enthusiasts. It's famous for its hippie culture, picturesque surroundings, and trekking trails. Travelers can explore places like Chalal Village, Manikaran Sahib Gurudwara, and Kheerganga Trek for a serene retreat amidst the Himalayas.",
-    heroImage: himachalImage,
-    galleryImages: [himachalImage],
+    heroImage: manalisissuImage,
+    galleryImages: [manalisissuImage],
     durationDays: 3,
     durationNights: 2,
     price: 14999,
@@ -869,8 +882,8 @@ export const tours: Tour[] = [
     name: "Shimla Kalpa Chitkul",
     tagline: "Queen of Hills to Last Village",
     description: "Shimla, Kalpa, and Chitkul are three distinct places in the state of Himachal Pradesh, India. Shimla, the capital of Himachal Pradesh, is a popular hill station known for its colonial architecture, scenic beauty, and pleasant climate. It has historical sites, vibrant markets, and serves as a hub for tourists exploring the Himalayan region. Kalpa is a serene town in the Kinnaur district, offering breathtaking views of the Kinnaur Kailash mountain range. Known for its apple orchards and traditional architecture, Kalpa provides a peaceful retreat amidst the Himalayan landscapes. Chitkul, located near the Indo-Tibetan border, is a picturesque village and the last inhabited settlement on the border. It is renowned for its stunning landscapes, including snow-capped peaks and green meadows, making it a sought-after destination for nature lovers and trekkers. Traveling from Shimla to Kalpa and then to Chitkul provides a diverse experience, from the bustling hill station of Shimla to the tranquil beauty of Kalpa and the remote charm of Chitkul, showcasing the varied landscapes and cultural richness of Himachal Pradesh.",
-    heroImage: himachalImage,
-    galleryImages: [himachalImage],
+    heroImage: kalpaImage,
+    galleryImages: [kalpaImage],
     durationDays: 4,
     durationNights: 3,
     price: 16999,
@@ -950,8 +963,8 @@ export const tours: Tour[] = [
     name: "Winter Spiti Expedition",
     tagline: "The Middle Land Winter Adventure",
     description: "Spiti Valley is a cold desert mountain valley located high in the Himalayas in the north-eastern part of the northern Indian state of Himachal Pradesh. The name 'Spiti' means 'The middle land', i.e. the land between Tibet and India. The local population follows Vajrayana Buddhism similar to that found in the nearby Tibet and Ladakh regions. The valley and surrounding region is one of the least populated regions in India and is the gateway to the northernmost reaches of the nation. Along the northern route from Manali, Himachal Pradesh or Keylong via the Rohtang Pass or Kunzum Pass respectively, the valley lies in the North-Eastern section of the Indian state Himachal Pradesh and forms part of the Lahaul and Spiti district. The sub-divisional headquarters (capital) is Kaza, Himachal Pradesh which is situated along the Spiti River at an elevation of about 12,500 feet (3,800 m) above mean sea level.",
-    heroImage: spitiImage,
-    galleryImages: [spitiImage, himachalImage, ladakhImage],
+    heroImage: winterSpiti,
+    galleryImages: [winterSpiti, himachalImage, ladakhImage],
     durationDays: 8,
     durationNights: 7,
     price: 19999,
@@ -1053,8 +1066,8 @@ export const tours: Tour[] = [
     name: "Full Circuit Summer Spiti Expedition",
     tagline: "Complete Spiti Valley Experience",
     description: "Explore the complete Spiti Valley circuit in summer with pristine Chandrataal Lake, ancient monasteries, and breathtaking high-altitude landscapes. This comprehensive expedition covers all major attractions of Spiti Valley including the world's highest post office, fossil-rich villages, and the mesmerizing moon lake - Chandrataal.",
-    heroImage: spitiImage,
-    galleryImages: [spitiImage, ladakhImage, himachalImage],
+    heroImage: spitiLakeWithChandrataal,
+    galleryImages: [spitiLakeWithChandrataal, ladakhImage, himachalImage],
     durationDays: 7,
     durationNights: 6,
     price: 19499,
@@ -1159,8 +1172,8 @@ export const tours: Tour[] = [
     name: "Spiti Valley Bike Expedition",
     tagline: "Ultimate Himalayan Biking Adventure",
     description: "Challenging terrains, high passes, exhilarating views, and one hell of a machine are what all bikers dream of. If you too are one of those who have a passion to ride on seemingly endless roads, then perhaps a bike trip to Spiti Valley is all that you need. Spiti Valley is a high-altitude desert whose beauty unveils after a tough and tricky ride through the most challenging roads of the Himalayas. If you feel the need for adrenaline, you got your share of the dose right throughout your trip to Spiti. A bike expedition to Spiti can give you the feel of riding through the passes of Leh Ladakh, as this place is popularly called the mini version of it! As you begin your journey to Spiti from Manali, you travel through the popular Rohtang Pass located in the Pir Panjal Range of the Himalayas. This ride will feed your appetite for thrill and vast soul-satiating panoramas. As you leave behind the chaos of cities, Spiti Valley will happily embrace you into a zone of peace and love. Soak in the holy vibes at Key Monastery, which is an important place of pilgrimage for the Buddhist population residing in Spiti. Explore the long-lost stories in the fossils of Langza Village and witness the grandeur of the golden statue of Buddha. Ride up to the highest post office in the world at Hikkim and send a postcard to your loved ones and also to yourself! In short, just forget about the metropolis life for a few days and spend some time in a natural retreat in this high-altitude desert!",
-    heroImage: spitiImage,
-    galleryImages: [spitiImage, ladakhImage, himachalImage],
+    heroImage: spitiBike,
+    galleryImages: [spitiBike, ladakhImage, himachalImage],
     durationDays: 7,
     durationNights: 6,
     price: 29999,
@@ -1271,8 +1284,8 @@ export const tours: Tour[] = [
     name: "Short Circuit Summer Spiti Expedition",
     tagline: "Compact Spiti Adventure",
     description: "Journey from the lush green valleys of Manali to the surreal, high-altitude desert of Spiti. Cross the dramatic Rohtang Pass, witness the shifting landscapes, and reach the stunning Chandratal Lake, where turquoise waters mirror snow-capped peaks. Camp under starlit skies before heading toward Kaza, the cultural heart of Spiti Valley. Explore ancient monasteries, remote villages like Hikkim, Komic, and Langza, and soak in the raw, spiritual beauty of the Himalayas. This is not just a road trip—it's an adventure through time and terrain.",
-    heroImage: spitiImage,
-    galleryImages: [spitiImage, ladakhImage, himachalImage],
+    heroImage: spitiShortCircuit,
+    galleryImages: [spitiShortCircuit, ladakhImage, himachalImage],
     durationDays: 5,
     durationNights: 4,
     price: 13999,

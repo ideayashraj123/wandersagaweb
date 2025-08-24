@@ -4,6 +4,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Star, MapPin, Clock, Users } from "lucide-react";
 import uttarakhandImage from "@/assets/Uttarakhand.jpg";
+import choptatrekImage from "@/assets/images/choptatrek.jpg";
+import naagtibbaImage from "@/assets/images/naagtibba.jpg";
+import chakrataImage from "@/assets/images/chakrata (2).jpg";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -20,7 +23,7 @@ const Uttarakhand = () => {
       id: 1,
       name: "Chopta Tungnath Chandrashila Trek",
       location: "Garhwal, Uttarakhand",
-      image: uttarakhandImage,
+      image: choptatrekImage,
       rating: 4.9,
       duration: "4 Days",
       groupSize: "6-15 People",
@@ -35,7 +38,7 @@ const Uttarakhand = () => {
       id: 2,
       name: "Naagtibba Weekend Trek",
       location: "Garhwal Himalayas, Uttarakhand",
-      image: uttarakhandImage,
+      image: naagtibbaImage,
       rating: 4.7,
       duration: "2 Days",
       groupSize: "4-12 People",
@@ -50,7 +53,7 @@ const Uttarakhand = () => {
       id: 3,
       name: "Chakrata Hill Station Getaway",
       location: "Dehradun, Uttarakhand",
-      image: uttarakhandImage,
+      image: chakrataImage,
       rating: 4.6,
       duration: "3 Days",
       groupSize: "2-10 People",
@@ -83,7 +86,10 @@ const Uttarakhand = () => {
           <div className="absolute inset-0 bg-black/20"></div>
           <div 
             className="absolute inset-0 bg-cover bg-center bg-no-repeat" 
-            style={{ backgroundImage: `url(${uttarakhandImage})` }}
+            style={{ 
+              backgroundImage: `url(${uttarakhandImage})`,
+              backgroundPosition: 'center 40%'
+            }}
           ></div>
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 className="text-5xl lg:text-6xl font-bold text-white mb-6">
@@ -129,7 +135,7 @@ const Uttarakhand = () => {
                   <img 
                     src={tour.image} 
                     alt={tour.name}
-                    className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700"
+                    className={`w-full h-64 object-cover ${tour.name === 'Chakrata Hill Station' ? 'object-[50%_60%]' : 'object-center'} group-hover:scale-102 transition-transform duration-700`}
                     loading="lazy"
                   />
                   

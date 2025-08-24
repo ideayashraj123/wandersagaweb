@@ -172,14 +172,13 @@ const Contact = () => {
                 </CardHeader>
                 <CardContent className="px-4 sm:px-6">
                   <div className="flex space-x-3 sm:space-x-4">
-                    <Button size="icon" variant="outline" className="h-9 w-9 sm:h-10 sm:w-10">
-                      <Facebook className="h-3 w-3 sm:h-4 sm:w-4" />
-                    </Button>
-                    <Button size="icon" variant="outline" className="h-9 w-9 sm:h-10 sm:w-10">
-                      <Instagram className="h-3 w-3 sm:h-4 sm:w-4" />
-                    </Button>
-                    <Button size="icon" variant="outline" className="h-9 w-9 sm:h-10 sm:w-10">
-                      <Twitter className="h-3 w-3 sm:h-4 sm:w-4" />
+                    <Button 
+                      size="icon" 
+                      variant="outline" 
+                      onClick={() => window.open('https://www.instagram.com/wandersagavoyages/', '_blank')}
+                      className="h-12 w-12 sm:h-14 sm:w-14"
+                    >
+                      <Instagram className="h-6 w-6 sm:h-7 sm:w-7" />
                     </Button>
                   </div>
                 </CardContent>

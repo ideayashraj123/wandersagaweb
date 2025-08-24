@@ -4,6 +4,12 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Star, MapPin, Clock, Users } from "lucide-react";
 import himachalImage from "@/assets/Himachal.jpg";
+import jibhiImage from "@/assets/images/jibhi.jpg";
+import kasolImage from "@/assets/images/kasol.jpg";
+import mclordgangImage from "@/assets/images/mclordgang.jpg";
+import kalpaImage from "@/assets/images/kalpa.jpg";
+import manalisissuImage from "@/assets/images/manalisissu.jpg";
+import yullakundaImage from "@/assets/images/yullakunda.jpg";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -20,7 +26,7 @@ const Himachal = () => {
       id: 1,
       name: "Tirthan Jibhi Valley",
       location: "Himachal Pradesh, India",
-      image: himachalImage,
+      image: jibhiImage,
       rating: 4.8,
       duration: "3 Days",
       groupSize: "2-8 People",
@@ -35,7 +41,7 @@ const Himachal = () => {
       id: 2,
       name: "Kasol Kheerganga Trek",
       location: "Parvati Valley, Himachal Pradesh",
-      image: himachalImage,
+      image: kasolImage,
       rating: 4.7,
       duration: "3 Days",
       groupSize: "4-12 People",
@@ -50,7 +56,7 @@ const Himachal = () => {
       id: 3,
       name: "McLeodganj Triund Bir",
       location: "Dharamshala, Himachal Pradesh",
-      image: himachalImage,
+      image: mclordgangImage,
       rating: 4.9,
       duration: "6 Days",
       groupSize: "2-10 People",
@@ -65,7 +71,7 @@ const Himachal = () => {
       id: 4,
       name: "Shimla Kalpa Chitkul",
       location: "Kinnaur, Himachal Pradesh",
-      image: himachalImage,
+      image: kalpaImage,
       rating: 4.8,
       duration: "4 Days",
       groupSize: "4-12 People",
@@ -80,7 +86,7 @@ const Himachal = () => {
       id: 5,
       name: "Manali Sissu Kasol",
       location: "Himachal Pradesh, India",
-      image: himachalImage,
+      image: manalisissuImage,
       rating: 4.8,
       duration: "3 Days",
       groupSize: "2-8 People",
@@ -95,7 +101,7 @@ const Himachal = () => {
       id: 6,
       name: "Yulla Kanda Trek",
       location: "Himachal Pradesh, India",
-      image: himachalImage,
+      image: yullakundaImage,
       rating: 4.6,
       duration: "4 Days",
       groupSize: "2-6 People",
@@ -128,7 +134,10 @@ const Himachal = () => {
           <div className="absolute inset-0 bg-black/20"></div>
           <div 
             className="absolute inset-0 bg-cover bg-center bg-no-repeat" 
-            style={{ backgroundImage: `url(${himachalImage})` }}
+            style={{ 
+              backgroundImage: `url(${himachalImage})`,
+              backgroundPosition: 'center 35%'
+            }}
           ></div>
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 className="text-5xl lg:text-6xl font-bold text-white mb-6">
@@ -174,7 +183,13 @@ const Himachal = () => {
                   <img 
                     src={tour.image} 
                     alt={tour.name}
-                    className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700"
+                    className={`w-full h-64 object-cover ${
+                      tour.name === 'Kasol Kheerganga Trek' || tour.name === 'McLeodganj Triund Bir' 
+                        ? 'object-[50%_70%]' 
+                        : tour.name === 'Yulla Kanda Trek'
+                        ? 'object-[50%_30%]'
+                        : 'object-center'
+                    } group-hover:scale-101 transition-transform duration-700`}
                     loading="lazy"
                   />
                   

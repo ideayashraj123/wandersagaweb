@@ -239,7 +239,7 @@ const TourDetail = () => {
               <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                 {tour.galleryImages.map((img, idx) => (
                   <div key={idx} className="relative overflow-hidden rounded-xl group">
-                    <img src={img} alt={`${tour.name} ${idx + 1}`} className="h-36 w-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+                    <img src={img} alt={`${tour.name} ${idx + 1}`} className="h-36 w-full object-cover object-center transition-transform duration-500 group-hover:scale-105" loading="lazy" />
                   </div>
                 ))}
               </div>
@@ -370,7 +370,7 @@ const TourDetail = () => {
               .map((t) => (
                 <Card key={t.slug} className="overflow-hidden group cursor-pointer" onClick={() => navigate(`/tour/${t.slug}`)}>
                   <div className="relative h-40 overflow-hidden">
-                    <img src={t.heroImage} alt={t.name} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+                    <img src={t.heroImage} alt={t.name} className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105" loading="lazy" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                     <div className="absolute bottom-2 left-2 right-2 text-white">
                       <div className="flex items-center justify-between">

@@ -181,25 +181,29 @@ const Navbar = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 lg:h-20">
             {/* Logo */}
+          <div className="flex items-center space-x-3">
+            {/* Logo Icon - Opens Map */}
             <div 
-              className="flex items-center space-x-3 group cursor-pointer"
+              className={`p-2 rounded-xl transition-all duration-500 cursor-pointer hover:bg-white/20 ${
+                isScrolled ? "bg-primary/10" : "bg-white/10 backdrop-blur-sm"
+              }`}
               onClick={handleLogoClick}
             >
-              <div className={`p-2 rounded-xl transition-all duration-500 ${
-                isScrolled ? "bg-primary/10" : "bg-white/10 backdrop-blur-sm"
-              }`}>
-                <MapPin className={`h-6 w-6 transition-colors duration-500 ${
-                  isScrolled ? "text-primary" : "text-white"
-                }`} />
-              </div>
-              <span className={`text-xl font-bold transition-all duration-500 tracking-tight ${
+              <MapPin className={`h-6 w-6 transition-colors duration-500 ${
                 isScrolled ? "text-primary" : "text-white"
-              }`}>
-                WanderSaga
-              </span>
+              }`} />
             </div>
-
-            {/* Desktop Navigation */}
+            
+            {/* Brand Text - Goes to Home */}
+            <span 
+              className={`text-xl font-bold transition-all duration-500 tracking-tight cursor-pointer hover:opacity-80 ${
+                isScrolled ? "text-primary" : "text-white"
+              }`}
+              onClick={() => navigate('/')}
+            >
+              WanderSaga
+            </span>
+          </div>            {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-1 whitespace-nowrap relative overflow-visible">
               {navItems.map((item) => (
                 <div
@@ -393,9 +397,8 @@ const Navbar = () => {
             <div className="flex gap-3">
               <Button 
                 onClick={() => {
-                  const address = "WANDERSAGA, 6th floor, Roots Tower, near V3S MALL, Swasthya Vihar, New Delhi, Delhi, 110092";
-                  const encodedAddress = encodeURIComponent(address);
-                  const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
+                  const coordinates = "28.63827817108731,77.28524213623255";
+                  const googleMapsUrl = `https://www.google.com/maps?q=${coordinates}`;
                   window.open(googleMapsUrl, '_blank');
                 }}
                 className="flex-1 btn-hero"

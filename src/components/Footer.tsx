@@ -84,14 +84,12 @@ const Footer = () => {
 
               {/* Social Media */}
               <div className="flex space-x-4">
-                {[Facebook, Instagram, Twitter, Youtube].map((Icon, index) => (
-                  <button 
-                    key={index}
-                    className="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
-                  >
-                    <Icon className="h-5 w-5" />
-                  </button>
-                ))}
+                <button 
+                  onClick={() => window.open('https://www.instagram.com/wandersagavoyages/', '_blank')}
+                  className="w-14 h-14 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
+                >
+                  <Instagram className="h-7 w-7" />
+                </button>
               </div>
             </div>
 

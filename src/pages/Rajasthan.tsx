@@ -109,7 +109,7 @@ const Rajasthan = () => {
                 <img 
                   src={tour.image} 
                   alt={tour.name}
-                  className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                  className="w-full h-48 object-cover object-center group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute top-4 left-4">
                   <span className="bg-red-500 text-white px-2 py-1 rounded text-sm font-medium">
