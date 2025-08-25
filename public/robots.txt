@@ -12,3 +12,29 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+# Important pages for SEO
+Allow: /spiti-valley
+Allow: /himachal
+Allow: /uttarakhand
+Allow: /kashmir
+Allow: /ladakh
+Allow: /rajasthan
+Allow: /about-us
+Allow: /contact
+
+# Allow assets
+Allow: /assets/
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.png
+Allow: /*.webp
+Allow: /*.gif
+Allow: /*.css
+Allow: /*.js
+
+# Sitemap
+Sitemap: https://wandersaga.in/sitemap.xml
+
+# Crawl delay for better server performance
+Crawl-delay: 1
