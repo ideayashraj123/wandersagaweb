@@ -1,0 +1,57 @@
+/* /index.html 200
+
+# Security headers
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# Static assets cache rules
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Images cache rules  
+/*.jpg
+  Cache-Control: public, max-age=31536000
+  Expires: 365d
+/*.jpeg
+  Cache-Control: public, max-age=31536000
+  Expires: 365d
+/*.png
+  Cache-Control: public, max-age=31536000
+  Expires: 365d
+/*.webp
+  Cache-Control: public, max-age=31536000
+  Expires: 365d
+/*.gif
+  Cache-Control: public, max-age=31536000
+  Expires: 365d
+/*.svg
+  Cache-Control: public, max-age=31536000
+  Expires: 365d
+
+# CSS and JS cache rules
+/*.css
+  Cache-Control: public, max-age=31536000
+  Expires: 365d
+/*.js
+  Cache-Control: public, max-age=31536000
+  Expires: 365d
+
+# HTML cache rules
+/*.html
+  Cache-Control: public, max-age=3600
+  Expires: 1h
+
+# Font cache rules
+/*.woff2
+  Cache-Control: public, max-age=31536000
+  Expires: 365d
+/*.woff
+  Cache-Control: public, max-age=31536000
+  Expires: 365d
+/*.ttf
+  Cache-Control: public, max-age=31536000
+  Expires: 365d

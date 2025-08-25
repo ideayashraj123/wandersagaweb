@@ -124,16 +124,16 @@ const HeroSection = ({ onPlanTripClick }: HeroSectionProps) => {
                 ✨ Get Unforgettable Experiences
               </span>
               <h1 className="text-5xl lg:text-7xl font-bold leading-tight mb-6">
-                Discover Your
-                <span className="block text-gradient">Dream Journey</span>
+                Discover Spiti Valley
+                <span className="block text-gradient">& Himalayan Adventures</span>
               </h1>
               <p className="text-xl lg:text-2xl text-white/90 leading-relaxed mb-8">
-                Create memories that last a lifetime with our carefully curated travel experiences to the world's most beautiful destinations.
+                Create memories that last a lifetime with our carefully curated <strong>Spiti Valley tours</strong>, <strong>Himachal adventures</strong>, and <strong>Himalayan expeditions</strong> to the world's most beautiful destinations.
               </p>
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 mb-12 fade-in-up stagger-1">
+            <div className="flex flex-col sm:flex-row gap-4 mb-8 fade-in-up stagger-1">
               <Button className="btn-hero text-lg px-8 py-4">
                 <Search className="h-5 w-5 mr-2" />
                 Explore Destinations
@@ -145,6 +145,45 @@ const HeroSection = ({ onPlanTripClick }: HeroSectionProps) => {
               >
                 Plan Your Trip
               </Button>
+            </div>
+
+            {/* Popular Destinations Quick Links */}
+            <div className="fade-in-up stagger-2">
+              <p className="text-white/80 text-sm mb-4">Popular Destinations:</p>
+              <div className="flex flex-wrap gap-3">
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  onClick={() => navigate('/spiti-valley')}
+                  className="bg-white/5 backdrop-blur-sm border-white/20 text-white hover:bg-white/10 text-sm"
+                >
+                  Spiti Valley Tours
+                </Button>
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  onClick={() => navigate('/himachal')}
+                  className="bg-white/5 backdrop-blur-sm border-white/20 text-white hover:bg-white/10 text-sm"
+                >
+                  Himachal Tours
+                </Button>
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  onClick={() => navigate('/uttarakhand')}
+                  className="bg-white/5 backdrop-blur-sm border-white/20 text-white hover:bg-white/10 text-sm"
+                >
+                  Uttarakhand Tours
+                </Button>
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  onClick={() => navigate('/kashmir')}
+                  className="bg-white/5 backdrop-blur-sm border-white/20 text-white hover:bg-white/10 text-sm"
+                >
+                  Kashmir Tours
+                </Button>
+              </div>
             </div>
           </div>
 

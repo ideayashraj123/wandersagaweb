@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import SEO from "@/components/SEO";
+import Breadcrumb from "@/components/Breadcrumb";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Star, MapPin, Clock, Users, Phone, Mail, Calendar } from "lucide-react";
@@ -151,6 +152,9 @@ const SpitiValley = () => {
       />
       
       <Navbar />
+      <div className="pt-20">
+        <Breadcrumb />
+      </div>
       <div className="bg-gradient-to-br from-slate-50 to-blue-50">
         {/* Hero Section */}
         <section className="pt-24 pb-16 bg-gradient-to-r from-primary/90 to-primary/80 relative overflow-hidden">
