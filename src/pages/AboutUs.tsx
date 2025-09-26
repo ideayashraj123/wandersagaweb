@@ -6,7 +6,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import founderImage from "@/assets/IMG_4401.jpg";
+import founderImage from "@/assets/images/IMG_63255.jpg";
+import heroImage from "@/assets/IMG_4401.jpg";
 import heroBeachImage from "@/assets/hero-beach.webp";
 
 const AboutUs = () => {
@@ -60,7 +61,7 @@ const AboutUs = () => {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0">
           <img 
-            src={founderImage} 
+            src={heroImage} 
             alt="YashRaj Singh - Founder of WanderSaga" 
             className="w-full h-full object-cover object-[75%_center] md:object-center"
           />

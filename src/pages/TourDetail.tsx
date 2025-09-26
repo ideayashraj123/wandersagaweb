@@ -121,7 +121,8 @@ const TourDetail = () => {
           <img
             src={tour.heroImage}
             alt={tour.name}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-center"
+            style={{ objectPosition: '50% 68%' }}
             loading="eager"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />

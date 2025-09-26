@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Menu, X, MapPin, Phone, User, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import logo21 from "@/assets/images/logo21.png";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -184,14 +185,14 @@ const Navbar = () => {
           <div className="flex items-center space-x-3">
             {/* Logo Icon - Opens Map */}
             <div 
-              className={`p-2 rounded-xl transition-all duration-500 cursor-pointer hover:bg-white/20 ${
-                isScrolled ? "bg-primary/10" : "bg-white/10 backdrop-blur-sm"
-              }`}
+              className="p-2 rounded-xl transition-all duration-500 cursor-pointer hover:opacity-80"
               onClick={handleLogoClick}
             >
-              <MapPin className={`h-6 w-6 transition-colors duration-500 ${
-                isScrolled ? "text-primary" : "text-white"
-              }`} />
+              <img 
+                src={logo21} 
+                alt="WanderSaga Logo" 
+                className="h-8 w-8 object-contain"
+              />
             </div>
             
             {/* Brand Text - Goes to Home */}

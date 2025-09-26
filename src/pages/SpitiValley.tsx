@@ -44,9 +44,9 @@ const SpitiValley = () => {
       location: "Spiti Valley, Himachal Pradesh",
       image: winterSpiti,
       rating: 4.9,
-      duration: "5-7 Days",
+      duration: "6N/7D",
       groupSize: "2-8 People",
-      price: "₹19,999",
+      price: "₹16,500",
       originalPrice: "₹25,999",
       highlights: ["Snow Adventures", "Frozen Waterfalls", "Winter Monasteries", "Chadar Trek Style"],
       category: "Adventure",
@@ -160,8 +160,11 @@ const SpitiValley = () => {
         <section className="pt-24 pb-16 bg-gradient-to-r from-primary/90 to-primary/80 relative overflow-hidden">
           <div className="absolute inset-0 bg-black/20"></div>
           <div 
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat" 
-            style={{ backgroundImage: `url(${spitiValley})` }}
+            className="absolute inset-0 bg-cover bg-no-repeat" 
+            style={{ 
+              backgroundImage: `url(${spitiValley})`,
+              backgroundPosition: '50% 15%'
+            }}
           ></div>
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 className="text-5xl lg:text-6xl font-bold text-white mb-6">
