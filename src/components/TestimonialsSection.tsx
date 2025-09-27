@@ -108,11 +108,11 @@ const TestimonialsSection = () => {
 
         {/* Main Testimonial Carousel */}
         <div className="relative max-w-4xl mx-auto mb-16">
-          <Card className="bg-gradient-card backdrop-blur-sm border-0 shadow-large rounded-3xl overflow-hidden">
+          <Card className="relative bg-gradient-card backdrop-blur-sm border-0 shadow-large rounded-3xl overflow-hidden">
             <CardContent className="p-8 lg:p-12">
-              <div className="flex flex-col lg:flex-row items-center gap-8">
+              <div className="flex flex-col items-center gap-8">
                 {/* Testimonial Content */}
-                <div className="flex-1">
+                <div className="w-full">
                   <Quote className="h-12 w-12 text-accent mb-6 opacity-20" />
                   
                   <div className="mb-6">
@@ -142,39 +142,28 @@ const TestimonialsSection = () => {
                     </div>
                   </div>
                 </div>
-
-                {/* Customer Image */}
-                <div className="flex-shrink-0">
-                  <div className="w-32 h-32 lg:w-40 lg:h-40 rounded-full overflow-hidden shadow-medium">
-                    <img 
-                      src={testimonials[currentIndex].image} 
-                      alt={testimonials[currentIndex].name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </div>
               </div>
             </CardContent>
-          </Card>
 
-          {/* Navigation Buttons */}
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={prevTestimonial}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 w-12 h-12 rounded-full bg-white/80 backdrop-blur-sm border-white/20 hover:bg-white shadow-medium"
-          >
-            <ChevronLeft className="h-5 w-5" />
-          </Button>
-          
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={nextTestimonial}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 w-12 h-12 rounded-full bg-white/80 backdrop-blur-sm border-white/20 hover:bg-white shadow-medium"
-          >
-            <ChevronRight className="h-5 w-5" />
-          </Button>
+            {/* Navigation Buttons */}
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={prevTestimonial}
+              className="absolute left-0 top-1/2 transform -translate-y-1/2 w-12 h-12 rounded-full bg-white/80 backdrop-blur-sm border-white/20 hover:bg-white shadow-medium"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </Button>
+            
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={nextTestimonial}
+              className="absolute right-0 top-1/2 transform -translate-y-1/2 w-12 h-12 rounded-full bg-white/80 backdrop-blur-sm border-white/20 hover:bg-white shadow-medium"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </Button>
+          </Card>
         </div>
 
         {/* Testimonial Indicators */}
