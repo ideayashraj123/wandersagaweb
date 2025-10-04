@@ -1,5 +1,4 @@
 /* /index.html 200
-
 # Security headers
 /*
   X-Frame-Options: DENY
